@@ -1,0 +1,22 @@
+{
+	"boss": true,
+	"curly": true,
+	"devel": true,
+	"eqeqeq": true,
+	"eqnull": true,
+	"immed": true,
+	"latedef": true,
+	"maxcomplexity": 12,
+	"maxdepth": 4,
+	"maxstatements": 25,
+	"noarg": true,
+	"node": true,
+	"smarttabs": true,
+	"strict": false,
+	"undef": true,
+	"unused": true,
+	"white": false,
+	"globals": {
+		"test": true
+	}
+}

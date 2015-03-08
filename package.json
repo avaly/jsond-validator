@@ -1,0 +1,26 @@
+{
+  "name": "jsond-validator",
+  "version": "1.0.0",
+  "description": "JSOND Validator",
+  "author": "Valentin Agachi",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "mocha",
+    "lint": "grunt jshint && grunt jscs && grunt jsonlint"
+  },
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "glob": "^4.3.5",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-jscs": "^1.5.0",
+    "grunt-jsonlint": "^1.0.4",
+    "jshint-stylish": "^1.0.1",
+    "mocha": "^2.1.0"
+  }
+}
