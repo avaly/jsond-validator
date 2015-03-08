@@ -9,7 +9,9 @@
   ],
   "scripts": {
     "test": "mocha",
-    "lint": "grunt jshint && grunt jscs && grunt jsonlint"
+    "lint": "grunt jshint && grunt jscs && grunt jsonlint",
+    "precommit": "npm run lint",
+    "prepush": "npm test"
   },
   "license": "ISC",
   "dependencies": {},
@@ -20,6 +22,7 @@
     "grunt-contrib-jshint": "^0.11.0",
     "grunt-jscs": "^1.5.0",
     "grunt-jsonlint": "^1.0.4",
+    "husky": "^0.7.0",
     "jshint-stylish": "^1.0.1",
     "mocha": "^2.1.0"
   }

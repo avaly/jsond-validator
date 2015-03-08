@@ -2,7 +2,7 @@ var JSOND_BOOLEAN = 'boolean',
 	JSOND_STRING = 'string',
 	JSOND_NUMBER = 'number',
 	JSOND_INTEGER = 'integer',
-	JSON_NUMBER = '\\-?(?:0|[1-9]+)(?:\\.\\d+)?',
+	JSON_NUMBER = '\\-?(?:0|[1-9]\\d*)(?:\\.\\d+)?',
 	JSOND_SET_PATTERN = new RegExp('^\{(' + JSON_NUMBER + '(,' + JSON_NUMBER + ')*)\}$'),
 	JSOND_INTERVAL_PATTERN = new RegExp('^(\\[|\\()(' + JSON_NUMBER + ')?,(' + JSON_NUMBER + ')?(\\]|\\))$');
 
@@ -30,20 +30,26 @@ Validator.prototype = {
 function validateRoot(data, schema) {
 	var err;
 
-	if (schema === JSOND_BOOLEAN) {
-		err = validateBoolean(data);
-	}
-	else if (schema === JSOND_NUMBER) {
-		err = validateNumber(data);
-	}
-	else if (schema === JSOND_INTEGER) {
-		err = validateInteger(data);
-	}
-	else if (schema === JSOND_STRING) {
-		err = validateString(data);
+	// console.log('validateRoot', data, schema);
+	if (Array.isArray(schema)) {
+		err = validateArray(data, schema);
 	}
 	else {
-		err = validateSpecial(data, schema);
+		if (schema === JSOND_BOOLEAN) {
+			err = validateBoolean(data);
+		}
+		else if (schema === JSOND_NUMBER) {
+			err = validateNumber(data);
+		}
+		else if (schema === JSOND_INTEGER) {
+			err = validateInteger(data);
+		}
+		else if (schema === JSOND_STRING) {
+			err = validateString(data);
+		}
+		else {
+			err = validateSpecial(data, schema);
+		}
 	}
 	// console.log('err', err);
 
@@ -192,12 +198,51 @@ function validateRegularExpression(data, schema) {
 		schema = schema + '$';
 	}
 	pattern = new RegExp(schema);
+	// console.log('validateRegularExpression', data, pattern);
 
 	if (!pattern.test(data)) {
 		return {
 			code: 'STRING_PATTERN',
 			path: '.' // TODO
 		};
+	}
+}
+
+function validateArray(data, schema) {
+	var di, dl,
+		si, sl,
+		valid,
+		err;
+
+	// console.log('validateArray', data, schema);
+
+	if (!Array.isArray(data)) {
+		return {
+			code: 'ARRAY_REQUIRED',
+			path: '.' // TODO
+		};
+	}
+
+	sl = schema.length;
+
+	// Using `for` due to speed over native `forEach` or `reduce`
+	for (di = 0, dl = data.length; di < dl; di++) {
+		valid = false;
+
+		for (si = 0; si < sl; si++) {
+			err = validateRoot(data[di], schema[si]);
+			if (!err) {
+				valid = true;
+				break;
+			}
+		}
+
+		if (!valid) {
+			return {
+				code: 'ARRAY_ITEM',
+				path: '.' // TODO
+			};
+		}
 	}
 }
 
