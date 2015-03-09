@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+var fs = require('fs'),
+	Validator = require('../'),
+	validator = new Validator(),
+	data,
+	schema,
+	result;
+
+if (process.argv.length < 4) {
+	console.log('Usage: validate-jsond INPUT SCHEMA');
+	process.exit(0);
+}
+
+data = JSON.parse(fs.readFileSync(process.argv[2], 'utf-8'));
+schema = JSON.parse(fs.readFileSync(process.argv[3], 'utf-8'));
+
+result = validator.validate(data, schema);
+
+if (result.valid) {
+	console.log('The data is valid according to the JSOND schema!');
+}
+else {
+	console.log('The data is NOT valid according to the JSOND schema!');
+	console.log('');
+	console.log('Errors found:');
+	console.log(JSON.stringify(result.errors, null, 4));
+	process.exit(1);
+}
