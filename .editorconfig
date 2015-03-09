@@ -15,9 +15,3 @@ insert_final_newline = true
 [{package.json,circle.yml}]
 indent_style = space
 indent_size = 2
-
-# Locale files
-[locale/**.json]
-indent_style = space
-indent_size = 4
-insert_final_newline = false

@@ -1,9 +1,2 @@
 npm-debug.log
 node_modules
-!node_modules/web-api-models
-app/style/_extra/index.less
-config/assets.js
-locale/_import/
-results
-tmp
-VERSION

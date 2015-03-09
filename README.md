@@ -1,4 +1,6 @@
-# [JSOND](http://www.jsond.org/) Valitator
+# [JSOND](http://www.jsond.org/) Validator
+
+[![Circle CI](https://circleci.com/gh/avaly/jsond-validator/tree/master.svg?style=svg)](https://circleci.com/gh/avaly/jsond-validator/tree/master)
 
 > node.js module for validating JSOND schemas
 
