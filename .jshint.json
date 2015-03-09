@@ -5,7 +5,7 @@
 	"eqeqeq": true,
 	"eqnull": true,
 	"immed": true,
-	"latedef": true,
+	"latedef": false,
 	"maxcomplexity": 12,
 	"maxdepth": 4,
 	"maxstatements": 25,

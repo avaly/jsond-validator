@@ -3,6 +3,5 @@ machine:
     version: 0.10.33
 
 test:
-  override:
+  pre:
     - "npm run lint"
-    - "npm run test-ci"

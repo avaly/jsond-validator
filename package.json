@@ -1,11 +1,11 @@
 {
   "name": "jsond-validator",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "JSOND Validator",
   "author": "Valentin Agachi",
-  "main": "index.js",
+  "main": "lib/index.js",
   "files": [
-    "index.js"
+    "lib/index.js"
   ],
   "scripts": {
     "test": "mocha",
