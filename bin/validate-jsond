@@ -18,10 +18,10 @@ schema = JSON.parse(fs.readFileSync(process.argv[3], 'utf-8'));
 result = validator.validate(data, schema);
 
 if (result.valid) {
-	console.log('The data is valid according to the JSOND schema!');
+	console.log('The data is valid according to the JSON definition!');
 }
 else {
-	console.log('The data is NOT valid according to the JSOND schema!');
+	console.log('The data is NOT valid according to the JSON definition!');
 	console.log('');
 	console.log('Errors found:');
 	console.log(JSON.stringify(result.errors, null, 4));
