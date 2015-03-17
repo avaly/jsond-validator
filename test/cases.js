@@ -13,6 +13,10 @@ glob.sync(__dirname + '/data/*.js').forEach(function(dataFile) {
 				result = validator.validate(testCase.data, testCase.schema);
 
 			assert.equal(result.valid, testCase.valid, '`valid` matches expected');
+
+			if (result.valid !== testCase.valid && !result.valid) {
+				console.log(result.errors);
+			}
 		});
 	});
 });
