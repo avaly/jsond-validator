@@ -3,7 +3,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-jscs');
 	grunt.loadNpmTasks('grunt-jsonlint');
+	grunt.loadNpmTasks('grunt-mocha');
 	grunt.loadNpmTasks('grunt-mocha-test');
+	grunt.loadNpmTasks('grunt-webpack');
 
 	grunt.initConfig({
 		jscs: {
@@ -15,7 +17,7 @@ module.exports = function(grunt) {
 					src: [
 						'bin/*',
 						'lib/**/*.js',
-						'test/**/*.js'
+						'test/!(client)/*.js'
 					]
 				}
 			}
@@ -30,20 +32,24 @@ module.exports = function(grunt) {
 					src: [
 						'bin/*',
 						'lib/**/*.js',
-						'test/**/*.js'
+						'test/!(client)/*.js'
 					]
 				}
 			}
 		},
-		jsonlint: {
-			locale: {
-				files: {
-					src: [
-						'test/**/*.json'
-					]
+		// Client-side mocha tests
+		mocha: {
+			test: {
+				src: [
+					'test/client/*.html'
+				],
+				options: {
+					reporter: 'List',
+					run: true
 				}
 			}
 		},
+		// Node mocha tests
 		mochaTest: {
 			test: {
 				options: {
@@ -56,6 +62,20 @@ module.exports = function(grunt) {
 				]
 			}
 		},
+		webpack: {
+			tests: {
+				entry: {
+					cases: './test/cases.js',
+				},
+				output: {
+					path: './test/client/',
+					filename: '[name].js'
+				},
+				stats: {
+					modules: false
+				}
+			}
+		},
 		watch: {
 			all: {
 				files: [
@@ -63,14 +83,13 @@ module.exports = function(grunt) {
 					'test/**/*.js',
 					'test/**/*.json'
 				],
-				tasks: ['test', 'jshint']
+				tasks: ['mochaTest', 'jshint']
 			}
 		}
 	});
 
 	grunt.util._.each({
-		'default': ['watch'],
-		'test': ['mochaTest'],
+		'default': ['watch']
 	}, function(tasks, alias){
 		grunt.registerTask(alias, tasks);
 	});

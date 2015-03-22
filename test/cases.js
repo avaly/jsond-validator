@@ -1,11 +1,20 @@
-var path = require('path'),
-	assert = require('assert'),
-	glob = require('glob'),
-	Validator = require('../');
+var assert = require('chai').assert,
+	Validator = require('../'),
+	tests = [
+		'boolean.js',
+		'integer.js',
+		'number.js',
+		'interval.js',
+		'set.js',
+		'string.js',
+		'string-regular-expression.js',
+		'array.js',
+		'object.js',
+		'example-1.js'
+	];
 
-glob.sync(__dirname + '/data/*.js').forEach(function(dataFile) {
-	var testCases = require(dataFile),
-		testCaseFile = path.basename(dataFile);
+tests.forEach(function(testCaseFile) {
+	var testCases = require('./data/' + testCaseFile);
 
 	testCases.forEach(function(testCase) {
 		test(testCaseFile + ' ' + testCase.name, function() {

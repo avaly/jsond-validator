@@ -5,3 +5,7 @@ machine:
 test:
   pre:
     - "npm run lint"
+    - "npm run build"
+  override:
+    - "npm run test"
+    - "npm run test-client"

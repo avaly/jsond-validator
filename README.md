@@ -5,3 +5,11 @@
 > node.js module for validating JSON definitions
 
 A validator for JSON definitions according to the [JSOND specification](http://tools.ietf.org/html/draft-oskarsson-jsond-00).
+
+## Development
+
+```
+npm run build
+npm run test
+npm run test-client
+```

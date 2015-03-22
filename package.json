@@ -11,24 +11,29 @@
     "validate-jsond": "./bin/validate-jsond"
   },
   "scripts": {
-    "test": "mocha",
-    "lint": "grunt jshint && grunt jscs && grunt jsonlint",
+    "lint": "grunt jshint && grunt jscs",
+    "build": "grunt webpack",
+    "test": "mocha test/*.js",
+    "test-client": "grunt mocha",
     "precommit": "npm run lint",
-    "prepush": "npm test"
+    "prepush": "npm run build && npm test"
   },
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "glob": "^4.3.5",
+    "chai": "^2.1.2",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-jshint": "^0.11.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-jscs": "^1.5.0",
-    "grunt-jsonlint": "^1.0.4",
+    "grunt-mocha": "^0.4.12",
     "grunt-mocha-test": "^0.12.7",
+    "grunt-webpack": "^1.0.8",
     "husky": "^0.7.0",
     "jshint-stylish": "^1.0.1",
-    "mocha": "^2.1.0"
+    "mocha": "^2.1.0",
+    "phantomjs": "^1.9.16",
+    "webpack": "^1.7.3"
   }
 }
