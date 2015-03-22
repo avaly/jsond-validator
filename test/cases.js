@@ -1,4 +1,4 @@
-var assert = require('chai').assert,
+var assert = require('assert'),
 	Validator = require('../'),
 	tests = [
 		'boolean.js',

@@ -1,13 +1,23 @@
 module.exports = function(grunt) {
+	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-jscs');
 	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-mocha');
 	grunt.loadNpmTasks('grunt-mocha-test');
+	grunt.loadNpmTasks('grunt-saucelabs');
 	grunt.loadNpmTasks('grunt-webpack');
 
 	grunt.initConfig({
+		connect: {
+			server: {
+				options: {
+					base: '',
+					port: 9999
+				}
+			}
+		},
 		jscs: {
 			all: {
 				options: {
@@ -62,6 +72,50 @@ module.exports = function(grunt) {
 				]
 			}
 		},
+		'saucelabs-mocha': {
+			tests: {
+				options: {
+					urls: [
+						'http://localhost:9999/test/client/index.html'
+					],
+					tunnelTimeout: 5,
+					build: process.env.CIRCLE_BUILD_NUM || 'dev',
+					concurrency: 3,
+					testname: 'jsond-validator',
+					'public': 'public',
+					browsers: [
+						{
+							browserName: 'googlechrome',
+							platform: 'Windows 8'
+						},
+						{
+							browserName: 'firefox',
+							platform: 'Windows 8'
+						},
+						{
+							browserName: 'internet explorer',
+							platform: 'Windows 8.1',
+							version: '11.0'
+						},
+						{
+							browserName: 'internet explorer',
+							platform: 'Windows 8',
+							version: '10.0'
+						},
+						{
+							browserName: 'internet explorer',
+							platform: 'Windows 7',
+							version: '9.0'
+						},
+						{
+							browserName: 'safari',
+							platform: 'OS X 10.10',
+							version: '8.0'
+						}
+					]
+				}
+			}
+		},
 		webpack: {
 			tests: {
 				entry: {
@@ -72,7 +126,7 @@ module.exports = function(grunt) {
 					filename: '[name].js'
 				},
 				stats: {
-					modules: false
+					modules: true
 				}
 			}
 		},
@@ -89,7 +143,9 @@ module.exports = function(grunt) {
 	});
 
 	grunt.util._.each({
-		'default': ['watch']
+		'default': ['watch'],
+		'dev': ['connect', 'watch'],
+		'saucelabs': ['connect', 'saucelabs-mocha']
 	}, function(tasks, alias){
 		grunt.registerTask(alias, tasks);
 	});
