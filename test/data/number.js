@@ -1,53 +1,51 @@
 module.exports = [
-	// valid
 	{
-		name: 'number, 1',
+		name: 'number',
 		schema: 'number',
-		data: 1,
-		valid: true
-	},
-	{
-		name: 'number, 0',
-		schema: 'number',
-		data: 0,
-		valid: true
-	},
-	{
-		name: 'number, -1',
-		schema: 'number',
-		data: -1,
-		valid: true
-	},
-	{
-		name: 'number, decimals',
-		schema: 'number',
-		data: 1.5,
-		valid: true
-	},
+		tests: [
+			// valid
+			{
+				name: '1',
+				data: 1,
+				valid: true
+			},
+			{
+				name: '0',
+				data: 0,
+				valid: true
+			},
+			{
+				name: '-1',
+				data: -1,
+				valid: true
+			},
+			{
+				name: 'decimals',
+				data: 1.5,
+				valid: true
+			},
 
-	// invalid
-	{
-		name: 'number, boolean',
-		schema: 'number',
-		data: true,
-		valid: false
-	},
-	{
-		name: 'number, non-empty string',
-		schema: 'number',
-		data: 'foo',
-		valid: false
-	},
-	{
-		name: 'number, array',
-		schema: 'number',
-		data: [],
-		valid: false
-	},
-	{
-		name: 'number, object',
-		schema: 'number',
-		data: {},
-		valid: false
+			// invalid
+			{
+				name: 'boolean',
+				data: true,
+				valid: false
+			},
+			{
+				name: 'non-empty string',
+				data: 'foo',
+				valid: false
+			},
+			{
+				name: 'array',
+				data: [],
+				valid: false
+			},
+			{
+				name: 'object',
+				data: {},
+				valid: false
+			}
+		]
 	}
 ];

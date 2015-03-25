@@ -10,6 +10,7 @@ var assert = require('assert'),
 		'string-regular-expression.js',
 		'array.js',
 		'object.js',
+		'reference.js',
 		'example-1.js'
 	];
 
@@ -17,15 +18,34 @@ tests.forEach(function(testCaseFile) {
 	var testCases = require('./data/' + testCaseFile);
 
 	testCases.forEach(function(testCase) {
-		test(testCaseFile + ' ' + testCase.name, function() {
-			var validator = new Validator(),
-				result = validator.validate(testCase.data, testCase.schema);
+		if (!testCase.tests) {
+			return;
+		}
+		testCase.tests.forEach(function(testData, testIndex) {
+			var testName = [
+					testCaseFile,
+					testCase.name,
+					(testData.name || testIndex)
+				].join(' - ');
 
-			assert.equal(result.valid, testCase.valid, '`valid` matches expected');
+			test(testName, function() {
+				var validator = new Validator(),
+					result;
 
-			if (result.valid !== testCase.valid && !result.valid) {
-				console.log(result.errors);
-			}
+				if (testCase.schemas) {
+					Object.keys(testCase.schemas).forEach(function(key) {
+						validator.addSchema(key, testCase.schemas[key]);
+					});
+				}
+
+				result = validator.validate(testData.data, testCase.schema);
+
+				assert.equal(result.valid, testData.valid, '`valid` matches expected');
+
+				if (result.valid !== testData.valid && !result.valid) {
+					console.log(result.errors);
+				}
+			});
 		});
 	});
 });

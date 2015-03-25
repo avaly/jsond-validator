@@ -1,53 +1,50 @@
 module.exports = [
-	// valid
 	{
-		name: 'boolean, true',
+		name: 'boolean',
 		schema: 'boolean',
-		data: true,
-		valid: true
-	},
-	{
-		name: 'boolean, false',
-		schema: 'boolean',
-		data: false,
-		valid: true
-	},
-
-	// invalid
-	{
-		name: 'boolean, number',
-		schema: 'boolean',
-		data: 1,
-		valid: false
-	},
-	{
-		name: 'boolean, number 0',
-		schema: 'boolean',
-		data: 0,
-		valid: false
-	},
-	{
-		name: 'boolean, non-empty string',
-		schema: 'boolean',
-		data: 'foo',
-		valid: false
-	},
-	{
-		name: 'boolean, empty string',
-		schema: 'boolean',
-		data: '',
-		valid: false
-	},
-	{
-		name: 'boolean, array',
-		schema: 'boolean',
-		data: [],
-		valid: false
-	},
-	{
-		name: 'boolean, object',
-		schema: 'boolean',
-		data: {},
-		valid: false
+		tests: [
+			// valid
+			{
+				name: 'true',
+				data: true,
+				valid: true
+			},
+			{
+				name: 'false',
+				data: false,
+				valid: true
+			},
+			// invalid
+			{
+				name: 'number',
+				data: 1,
+				valid: false
+			},
+			{
+				name: 'number 0',
+				data: 0,
+				valid: false
+			},
+			{
+				name: 'non-empty string',
+				data: 'foo',
+				valid: false
+			},
+			{
+				name: 'empty string',
+				data: '',
+				valid: false
+			},
+			{
+				name: 'empty array',
+				data: [],
+				valid: false
+			},
+			{
+				name: 'empty object',
+				data: {},
+				valid: false
+			}
+		]
 	}
 ];

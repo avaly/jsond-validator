@@ -2,87 +2,85 @@
  * Example taken from http://tools.ietf.org/html/draft-oskarsson-jsond-00#appendix-A
  */
 
-var schema = [
-	{
-		id: 'integer',
-		slug: 'string',
-		url: 'string',
-		category: 'integer',
-		price: 'number',
-		reduced: 'boolean'
-	}
-];
-
 module.exports = [
-	// valid
 	{
-		name: 'example-1, valid',
-		schema: schema,
-		data: [
+		name: 'example-1',
+		schema: [
 			{
-				id: 123,
-				slug: 'foo-bar',
-				url: 'http://host.com/foo-bar',
-				category: 234,
-				price: 12.34,
-				reduced: false
-			},
-			{
-				id: 234,
-				slug: 'bar',
-				url: 'http://host.com/bar-ham',
-				category: 234,
-				price: 12,
-				reduced: true
+				id: 'integer',
+				slug: 'string',
+				url: 'string',
+				category: 'integer',
+				price: 'number',
+				reduced: 'boolean'
 			}
 		],
-		valid: true
-	},
-
-	// invalid
-	{
-		name: 'example-1, property mismatch',
-		schema: schema,
-		data: [
+		tests: [
 			{
-				id: 123,
-				slug: 'foo-bar',
-				url: 'http://host.com/foo-bar',
-				category: 234,
-				price: 12.34,
-				reduced: false
+				name: 'valid',
+				data: [
+					{
+						id: 123,
+						slug: 'foo-bar',
+						url: 'http://host.com/foo-bar',
+						category: 234,
+						price: 12.34,
+						reduced: false
+					},
+					{
+						id: 234,
+						slug: 'bar',
+						url: 'http://host.com/bar-ham',
+						category: 234,
+						price: 12,
+						reduced: true
+					}
+				],
+				valid: true
 			},
 			{
-				id: 234,
-				slug: 'bar',
-				url: 'http://host.com/bar-ham',
-				category: 234.5,
-				price: 12,
-				reduced: true
-			}
-		],
-		valid: false
-	},
-	{
-		name: 'example-1, property missing',
-		schema: schema,
-		data: [
-			{
-				id: 123,
-				url: 'http://host.com/foo-bar',
-				category: 234,
-				price: 12.34,
-				reduced: false
+				name: 'property mismatch',
+				data: [
+					{
+						id: 123,
+						slug: 'foo-bar',
+						url: 'http://host.com/foo-bar',
+						category: 234,
+						price: 12.34,
+						reduced: false
+					},
+					{
+						id: 234,
+						slug: 'bar',
+						url: 'http://host.com/bar-ham',
+						category: 234.5,
+						price: 12,
+						reduced: true
+					}
+				],
+				valid: false
 			},
 			{
-				id: 234,
-				slug: 'bar',
-				url: 'http://host.com/bar-ham',
-				category: 234,
-				price: 12,
-				reduced: true
+				name: 'property missing',
+				data: [
+					{
+						id: 123,
+						url: 'http://host.com/foo-bar',
+						category: 234,
+						price: 12.34,
+						reduced: false
+					},
+					{
+						id: 234,
+						slug: 'bar',
+						url: 'http://host.com/bar-ham',
+						category: 234,
+						price: 12,
+						reduced: true
+					}
+				],
+				valid: false
 			}
-		],
-		valid: false
+		]
 	}
 ];
