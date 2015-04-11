@@ -18,22 +18,46 @@ module.exports = [
 			{
 				name: 'number',
 				data: 1,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'STRING_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'boolean',
 				data: true,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'STRING_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'array',
 				data: [],
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'STRING_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'object',
 				data: {},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'STRING_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	}

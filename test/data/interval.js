@@ -21,12 +21,24 @@ module.exports = [
 			{
 				name: 'value is start - 1',
 				data: 1,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTERVAL_START',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'value is end + 1',
 				data: 6,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTERVAL_END',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	},
@@ -47,12 +59,24 @@ module.exports = [
 			{
 				name: 'value is start - 1',
 				data: 1,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTERVAL_START',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'value is end',
 				data: 5,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTERVAL_END',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	},
@@ -73,12 +97,24 @@ module.exports = [
 			{
 				name: 'value is start',
 				data: 2,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTERVAL_START',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'value is end + 1',
 				data: 6,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTERVAL_END',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	},
@@ -94,7 +130,13 @@ module.exports = [
 			{
 				name: 'value is start - 1',
 				data: 1,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTERVAL_START',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	},
@@ -110,7 +152,13 @@ module.exports = [
 			{
 				name: 'value is end + 1',
 				data: 3,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTERVAL_END',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	},
@@ -126,12 +174,24 @@ module.exports = [
 			{
 				name: 'value is start - 0.001',
 				data: 1.329,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTERVAL_START',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'value is end + 0.001',
 				data: 5.001,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTERVAL_END',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	}

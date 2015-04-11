@@ -18,33 +18,69 @@ module.exports = [
 			{
 				name: '-1',
 				data: -1,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTEGER_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'decimals',
 				data: 1.5,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTEGER_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 
 			{
 				name: 'boolean',
 				data: true,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTEGER_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'non-empty string',
 				data: 'foo',
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTEGER_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'array',
 				data: [],
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTEGER_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'object',
 				data: {},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTEGER_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	}

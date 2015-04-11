@@ -58,7 +58,13 @@ module.exports = [
 						reduced: true
 					}
 				],
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'ARRAY_ITEM',
+						path: [ '$', 1, 'category' ]
+					}
+				]
 			},
 			{
 				name: 'property missing',
@@ -79,7 +85,13 @@ module.exports = [
 						reduced: true
 					}
 				],
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'ARRAY_ITEM',
+						path: [ '$', 0, 'slug' ]
+					}
+				]
 			}
 		]
 	}

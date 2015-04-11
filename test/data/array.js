@@ -28,9 +28,16 @@ module.exports = [
 			{
 				name: '1 number',
 				data: [
+					'foo',
 					123
 				],
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'ARRAY_ITEM',
+						path: [ '$', 1 ]
+					}
+				]
 			}
 		]
 	},
@@ -56,7 +63,13 @@ module.exports = [
 				data: [
 					-45.67
 				],
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'ARRAY_ITEM',
+						path: [ '$', 0 ]
+					}
+				]
 			}
 		]
 	},
@@ -90,14 +103,26 @@ module.exports = [
 				data: [
 					-50
 				],
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'ARRAY_ITEM',
+						path: [ '$', 0 ]
+					}
+				]
 			},
 			{
 				name: 'invalid regular expression',
 				data: [
 					'abe'
 				],
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'ARRAY_ITEM',
+						path: [ '$', 0 ]
+					}
+				]
 			}
 		]
 	}

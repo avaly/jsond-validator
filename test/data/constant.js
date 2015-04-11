@@ -1,7 +1,7 @@
 module.exports = [
 	{
 		name: 'boolean, true',
-		schema: 'true',
+		schema: true,
 		tests: [
 			// valid
 			{
@@ -13,12 +13,24 @@ module.exports = [
 			{
 				name: 'false',
 				data: false,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'CONSTANT',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'integer',
 				data: 1,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'CONSTANT',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	},
@@ -36,12 +48,24 @@ module.exports = [
 			{
 				name: '1',
 				data: 1,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'CONSTANT',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'string',
 				data: '-1',
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'CONSTANT',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	},
@@ -74,7 +98,13 @@ module.exports = [
 					name: 'lorem',
 					active: false
 				},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTEGER_REQUIRED',
+						path: [ '$', 'id' ]
+					}
+				]
 			},
 			{
 				name: 'invalid tag',
@@ -84,7 +114,13 @@ module.exports = [
 					name: 'lorem',
 					active: false
 				},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'CONSTANT',
+						path: [ '$', 'tag' ]
+					}
+				]
 			},
 			{
 				name: 'invalid name',
@@ -94,7 +130,13 @@ module.exports = [
 					name: 'wrong',
 					active: false
 				},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'STRING_PATTERN',
+						path: [ '$', 'name' ]
+					}
+				]
 			},
 			{
 				name: 'invalid active',
@@ -104,7 +146,13 @@ module.exports = [
 					name: 'lorem',
 					active: true
 				},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'CONSTANT',
+						path: [ '$', 'active' ]
+					}
+				]
 			}
 		]
 	}

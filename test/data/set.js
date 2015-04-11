@@ -11,7 +11,13 @@ module.exports = [
 			{
 				name: 'no match',
 				data: 2,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'NOT_IN_SET',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	},
@@ -38,7 +44,13 @@ module.exports = [
 			{
 				name: 'no match',
 				data: 4.2,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'NOT_IN_SET',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	},
@@ -54,7 +66,13 @@ module.exports = [
 			{
 				name: 'no match',
 				data: -1.1,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'NOT_IN_SET',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	}

@@ -12,7 +12,13 @@ module.exports = [
 			{
 				name: 'invalid',
 				data: 'ad',
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'STRING_PATTERN',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	},
@@ -28,7 +34,13 @@ module.exports = [
 			{
 				name: 'invalid',
 				data: 'd',
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'STRING_PATTERN',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	},
@@ -44,7 +56,13 @@ module.exports = [
 			{
 				name: 'invalid',
 				data: 'fa5!6b.',
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'STRING_PATTERN',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	}

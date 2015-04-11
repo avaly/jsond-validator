@@ -29,22 +29,46 @@ module.exports = [
 			{
 				name: 'boolean',
 				data: true,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'NUMBER_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'non-empty string',
 				data: 'foo',
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'NUMBER_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'array',
 				data: [],
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'NUMBER_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'object',
 				data: {},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'NUMBER_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	}

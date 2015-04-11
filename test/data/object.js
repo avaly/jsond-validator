@@ -14,7 +14,13 @@ module.exports = [
 				data: {
 					name: 'Lorem'
 				},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'OBJECT_PROPERTIES_ADDITIONAL',
+						path: [ '$', 'name' ]
+					}
+				]
 			}
 		]
 	},
@@ -36,7 +42,13 @@ module.exports = [
 				data: {
 					name: 123
 				},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'STRING_REQUIRED',
+						path: [ '$', 'name' ]
+					}
+				]
 			}
 		]
 	},
@@ -64,7 +76,13 @@ module.exports = [
 					age: 19,
 					manager: false
 				},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTERVAL_START',
+						path: [ '$', 'age' ]
+					}
+				]
 			}
 		]
 	},
@@ -95,7 +113,13 @@ module.exports = [
 				data: {
 					location: 12.34
 				},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'OBJECT_PROPERTY_REQUIRED',
+						path: [ '$', 'name' ]
+					}
+				]
 			}
 		]
 	},
@@ -129,7 +153,13 @@ module.exports = [
 						number: 'Lorem'
 					}
 				},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'INTEGER_REQUIRED',
+						path: [ '$', 'address', 'number' ]
+					}
+				]
 			}
 		]
 	},

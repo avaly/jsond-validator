@@ -41,8 +41,18 @@ tests.forEach(function(testCaseFile) {
 
 				result = validator.validate(testData.data, testCase.schema);
 
-				assert.equal(result.valid, testData.valid, '`valid` matches expected');
+				assert.equal(result.valid, testData.valid,
+					'`valid` matches expected');
 
+				if (!result.valid) {
+					if (testData.errors) {
+						assert.deepEqual(result.errors, testData.errors);
+					}
+					else {
+						console.log(result.errors);
+						assert.ok(false, 'Missing errors defined for test!');
+					}
+				}
 				if (result.valid !== testData.valid && !result.valid) {
 					console.log(result.errors);
 				}

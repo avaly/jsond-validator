@@ -14,7 +14,13 @@ module.exports = [
 			{
 				name: 'invalid',
 				data: 123,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'STRING_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	},
@@ -42,14 +48,26 @@ module.exports = [
 					id: 'u12',
 					extra: 1
 				},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'OBJECT_PROPERTIES_ADDITIONAL',
+						path: [ '$', 'extra' ]
+					}
+				]
 			},
 			{
 				name: 'invalid third ref',
 				data: {
 					id: 'u'
 				},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'STRING_PATTERN',
+						path: [ '$', 'id' ]
+					}
+				]
 			}
 		]
 	}

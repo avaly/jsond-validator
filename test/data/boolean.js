@@ -18,32 +18,68 @@ module.exports = [
 			{
 				name: 'number',
 				data: 1,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'BOOLEAN_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'number 0',
 				data: 0,
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'BOOLEAN_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'non-empty string',
 				data: 'foo',
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'BOOLEAN_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'empty string',
 				data: '',
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'BOOLEAN_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'empty array',
 				data: [],
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'BOOLEAN_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			},
 			{
 				name: 'empty object',
 				data: {},
-				valid: false
+				valid: false,
+				errors: [
+					{
+						code: 'BOOLEAN_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	}
