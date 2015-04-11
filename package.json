@@ -5,7 +5,8 @@
   "author": "Valentin Agachi",
   "main": "lib/index.js",
   "files": [
-    "lib/index.js"
+    "lib/index.js",
+    "bin/validate-jsond"
   ],
   "bin": {
     "validate-jsond": "./bin/validate-jsond"
