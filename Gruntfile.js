@@ -1,3 +1,6 @@
+var webpack = require('webpack'),
+	WebpackStrip = require('strip-loader');
+
 module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -125,6 +128,20 @@ module.exports = function(grunt) {
 					path: './test/client/',
 					filename: '[name].js'
 				},
+				module: {
+					loaders: [
+						{
+							test: /\.js$/,
+							loader: 'strip-loader?strip[]=debug'
+						}
+					],
+				},
+				plugins: [
+					new webpack.NormalModuleReplacementPlugin(
+						/debug/,
+						process.cwd() + '/lib/debug-fake.js'
+					)
+				],
 				stats: {
 					modules: true
 				}

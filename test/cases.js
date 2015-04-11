@@ -1,17 +1,17 @@
 var assert = require('assert'),
 	Validator = require('../'),
 	tests = [
-		'boolean.js',
-		'integer.js',
-		'number.js',
-		'interval.js',
-		'set.js',
-		'string.js',
-		'string-regular-expression.js',
-		'array.js',
-		'object.js',
-		'reference.js',
-		'example-1.js'
+		'boolean',
+		'integer',
+		'number',
+		'interval',
+		'set',
+		'string',
+		'string-regular-expression',
+		'array',
+		'object',
+		'reference',
+		'example-1'
 	];
 
 tests.forEach(function(testCaseFile) {
