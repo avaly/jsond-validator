@@ -61,7 +61,7 @@ module.exports = [
 				valid: false,
 				errors: [
 					{
-						code: 'ARRAY_ITEM',
+						code: 'INTEGER_REQUIRED',
 						path: [ '$', 1, 'category' ]
 					}
 				]
@@ -88,7 +88,7 @@ module.exports = [
 				valid: false,
 				errors: [
 					{
-						code: 'ARRAY_ITEM',
+						code: 'OBJECT_PROPERTY_REQUIRED',
 						path: [ '$', 0, 'slug' ]
 					}
 				]

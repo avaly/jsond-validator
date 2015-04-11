@@ -34,7 +34,7 @@ module.exports = [
 				valid: false,
 				errors: [
 					{
-						code: 'ARRAY_ITEM',
+						code: 'STRING_REQUIRED',
 						path: [ '$', 1 ]
 					}
 				]

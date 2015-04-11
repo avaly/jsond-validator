@@ -10,7 +10,6 @@ module.exports = [
 			},
 			{
 				name: '1 property',
-				schema: {},
 				data: {
 					name: 'Lorem'
 				},

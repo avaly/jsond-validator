@@ -24,6 +24,6 @@ else {
 	console.log('The data is NOT valid according to the JSON definition!');
 	console.log('');
 	console.log('Errors found:');
-	console.log(JSON.stringify(result.errors, null, 4));
+	console.log(JSON.stringify(result.errors, null, 2));
 	process.exit(1);
 }
