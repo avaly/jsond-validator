@@ -10,6 +10,7 @@ var assert = require('assert'),
 		'string-regular-expression',
 		'array',
 		'object',
+		'constant',
 		'reference',
 		'example-1'
 	];
