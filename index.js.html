@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>index.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="JSONDValidator.html">JSONDValidator</a><ul class='methods'><li data-type='method'><a href="JSONDValidator.html#addSchema">addSchema</a></li><li data-type='method'><a href="JSONDValidator.html#validate">validate</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var JSOND_BOOLEAN = 'boolean',
+	JSOND_STRING = 'string',
+	JSOND_NUMBER = 'number',
+	JSOND_INTEGER = 'integer',
+	JSON_NUMBER = '\\-?(?:0|[1-9]\\d*)(?:\\.\\d+)?',
+	JSOND_SET_PATTERN = new RegExp('^\{(' + JSON_NUMBER + '(,' + JSON_NUMBER + ')*)\}$'),
+	JSOND_INTERVAL_PATTERN = new RegExp(
+		'^(\\[|\\()(' + JSON_NUMBER + ')?,(' + JSON_NUMBER + ')?(\\]|\\))$'
+	),
+	JSOND_OPTIONAL_PATTERN = /\?$/,
+	debug = function() {
+	};
+
+if (process.env.DEBUG) {
+	debug = require('debug')('jsond-validator');
+}
+
+/**
+ * Validates whether a given data object is a valid boolean value
+ *
+ * @private
+ *
+ * @param  {Mixed} data   An arbitrary data object
+ * @param  {Array} path   The JSON schema path to this data object
+ *
+ * @return {Object}       An errors list
+ */
+function validateBoolean(data, path) {
+	debug('validateBoolean', data, path);
+
+	if (typeof data !== 'boolean') {
+		return [{
+			code: 'BOOLEAN_REQUIRED',
+			path: [].concat(path)
+		}];
+	}
+
+	return [];
+}
+
+/**
+ * Validates whether a given data object is a valid string value
+ *
+ * @private
+ *
+ * @param  {Mixed} data   An arbitrary data object
+ * @param  {Array} path   The JSON schema path to this data object
+ *
+ * @return {Object}       An errors list
+ */
+function validateString(data, path) {
+	debug('validateString', data, path);
+
+	if (typeof data !== 'string') {
+		return [{
+			code: 'STRING_REQUIRED',
+			path: [].concat(path)
+		}];
+	}
+
+	return [];
+}
+
+/**
+ * Validates whether a given data object is a valid number value
+ *
+ * @private
+ *
+ * @param  {Mixed} data   An arbitrary data object
+ * @param  {Array} path   The JSON schema path to this data object
+ *
+ * @return {Object}       An errors list
+ */
+function validateNumber(data, path) {
+	debug('validateNumber', data, typeof data, path);
+
+	if (typeof data !== 'number') {
+		return [{
+			code: 'NUMBER_REQUIRED',
+			path: [].concat(path)
+		}];
+	}
+
+	return [];
+}
+
+/**
+ * Validates whether a given data object is a valid integer value
+ *
+ * @private
+ *
+ * @param  {Mixed} data   An arbitrary data object
+ * @param  {Array} path   The JSON schema path to this data object
+ *
+ * @return {Object}       An errors list
+ */
+function validateInteger(data, path) {
+	debug('validateInteger', data, typeof data, path);
+
+	if (typeof data !== 'number' || data &lt; 0 || data % 1 !== 0) {
+		return [{
+			code: 'INTEGER_REQUIRED',
+			path: [].concat(path)
+		}];
+	}
+
+	return [];
+}
+
+/**
+ * Validates whether a given data object is a valid special value,
+ * which can be a set, an interval or a regular expression.
+ *
+ * @private
+ *
+ * @param  {Mixed} data   An arbitrary data object
+ * @param  {Mixed} schema An arbitrary JSOND text
+ * @param  {Array} path   The JSON schema path to this data object
+ *
+ * @return {Object}       An errors list
+ */
+function validateSpecial(data, schema, path) {
+	var parsed;
+
+	debug('validateSpecial', data, schema, typeof schema, path);
+
+	parsed = schema.match(JSOND_SET_PATTERN);
+	if (parsed) {
+		return validateSet(data, schema, parsed, path);
+	}
+	else {
+		parsed = schema.match(JSOND_INTERVAL_PATTERN);
+		if (parsed) {
+			return validateInterval(data, schema, parsed, path);
+		}
+		else {
+			return validateRegularExpression(data, schema, path);
+		}
+	}
+
+	return [];
+}
+
+/**
+ * Validates whether a given data object is a valid set value
+ *
+ * @private
+ *
+ * @param  {Mixed} data   An arbitrary data object
+ * @param  {Mixed} schema An arbitrary JSOND text
+ * @param  {Mixed} parsed The result of the schema parsing by regex
+ * @param  {Array} path   The JSON schema path to this data object
+ *
+ * @return {Object}       An errors list
+ */
+function validateSet(data, schema, parsed, path) {
+	var values = parsed[1].split(','),
+		dataStringified = String(data),
+		errors;
+
+	errors = validateNumber(data);
+
+	debug('validateSet', dataStringified, schema, values, path);
+
+	if (!errors.length &amp;&amp; values.indexOf(dataStringified) === -1) {
+		errors = [{
+			code: 'NOT_IN_SET',
+			path: [].concat(path)
+		}];
+	}
+
+	return errors;
+}
+
+/**
+ * Validates whether a given data object is a valid interval value
+ *
+ * @private
+ *
+ * @param  {Mixed} data   An arbitrary data object
+ * @param  {Mixed} schema An arbitrary JSOND text
+ * @param  {Mixed} parsed The result of the schema parsing by regex
+ * @param  {Array} path   The JSON schema path to this data object
+ *
+ * @return {Object}       An errors list
+ */
+function validateInterval(data, schema, parsed, path) {
+	var startInclusive = (parsed[1] === '['),
+		endInclusive = (parsed[4] === ']'),
+		start,
+		end,
+		valid,
+		errors;
+
+	debug('validateInterval', data, schema, parsed, startInclusive, endInclusive, path);
+
+	errors = validateNumber(data);
+
+	// interval start
+	if (!errors.length &amp;&amp; parsed[2] &amp;&amp; parsed[2].length) {
+		start = Number(parsed[2]);
+		valid = false;
+
+		if (startInclusive) {
+			valid = (data >= start);
+		}
+		else {
+			valid = (data > start);
+		}
+
+		if (!valid) {
+			errors = [{
+				code: 'INTERVAL_START',
+				path: [].concat(path)
+			}];
+		}
+	}
+
+	// interval end
+	if (!errors.length &amp;&amp; parsed[3] &amp;&amp; parsed[3].length) {
+		end = Number(parsed[3]);
+		valid = false;
+
+		if (endInclusive) {
+			valid = (data &lt;= end);
+		}
+		else {
+			valid = (data &lt; end);
+		}
+
+		if (!valid) {
+			errors = [{
+				code: 'INTERVAL_END',
+				path: [].concat(path)
+			}];
+		}
+	}
+
+	return errors;
+}
+
+/**
+ * Validates whether a given data object is a valid regular expression value
+ *
+ * @private
+ *
+ * @param  {Mixed} data   An arbitrary data object
+ * @param  {Mixed} schema An arbitrary JSOND text
+ * @param  {Array} path   The JSON schema path to this data object
+ *
+ * @return {Object}       An errors list
+ */
+function validateRegularExpression(data, schema, path) {
+	var pattern;
+
+	if (schema[0] !== '^') {
+		schema = '^' + schema;
+	}
+	if (schema[schema.length - 1] !== '$') {
+		schema = schema + '$';
+	}
+	pattern = new RegExp(schema);
+
+	debug('validateRegularExpression', data, pattern, path);
+
+	if (!pattern.test(data)) {
+		return [{
+			code: 'STRING_PATTERN',
+			path: [].concat(path)
+		}];
+	}
+
+	return [];
+}
+
+/**
+ * Validates whether a given data object is a valid constant value
+ *
+ * @private
+ *
+ * @param  {Mixed} data   An arbitrary data object
+ * @param  {Mixed} schema An arbitrary constant value
+ * @param  {Array} path   The JSON schema path to this data object
+ *
+ * @return {Object}       An errors list
+ */
+function validateConstant(data, schema, path) {
+	debug('validateConstant', data, schema, path);
+
+	if (data !== schema) {
+		return [{
+			code: 'CONSTANT',
+			path: [].concat(path)
+		}];
+	}
+
+	return [];
+}
+
+/**
+ * Get a schema definition based on a possible reference
+ *
+ * @private
+ *
+ * @param  {Mixed} ref
+ * @param  {Object} schemas
+ *
+ * @return {Mixed}
+ */
+function getSchemaByRef(ref, schemas) {
+	var schema = ref;
+
+	while (typeof schema === 'string' &amp;&amp; schemas[schema]) {
+		schema = schemas[schema];
+	}
+
+	return schema;
+}
+
+/**
+ * Determines if the input data is a plain object
+ *
+ * @private
+ *
+ * @param  {Mixed}  data
+ *
+ * @return {Boolean}
+ */
+function isPlainObject(data) {
+	return (data != null &amp;&amp; typeof data === 'object' &amp;&amp;
+		!Array.isArray(data) &amp;&amp; data.constructor === Object);
+}
+
+/**
+ * The main validator class
+ *
+ * @constructor
+ */
+function JSONDValidator() {
+	this.schemas = {};
+	this.path = [];
+}
+
+module.exports = JSONDValidator;
+
+JSONDValidator.prototype = {
+	/**
+	 * Adds a schema definition for references lookup
+	 *
+	 * @example
+	 * var validator = new JSONDValidator();
+	 * validator.addSchema('http://foo.com/id.json', 'integer')
+	 *
+	 * @param {String} id     A JSOND schema identifier
+	 * @param {Mixed}  schema An arbitrary JSOND text
+	 */
+	addSchema: function(id, schema) {
+		this.schemas[id] = schema;
+	},
+
+	/**
+	 * Validates a given data object based on a schema definition or identifier.
+	 * Returns an object with the following properties:
+	 *
+	 * - `valid` - boolean result of the validation
+	 * - `errors` - list of errors detected at validation
+	 *
+	 * @example
+	 * var validator = new JSONDValidator();
+	 * validator.addSchema('http://foo.com/id.json', 'integer');
+	 * var result = validator.validate(id, 'http://foo.com/id.json');
+	 *
+	 * @param  {Mixed} data   An arbitrary data object
+	 * @param  {Mixed} schema An arbitrary JSOND text or reference
+	 *
+	 * @return {Object}
+	 */
+	validate: function(data, schema) {
+		var self = this,
+			result = {
+				valid: true,
+				errors: []
+			},
+			errors;
+
+		self.path = ['$'];
+		errors = self.validateRoot(data, schema);
+
+		if (errors.length) {
+			result.valid = false;
+			result.errors = [].concat(errors);
+		}
+
+		return result;
+	},
+
+	/**
+	 * Validates a given data object according to a given schema
+	 *
+	 * @private
+	 *
+	 * @param  {Mixed} data   An arbitrary data object
+	 * @param  {Mixed} schema An arbitrary JSOND text or reference
+	 *
+	 * @return {Object}       An errors list
+	 */
+	validateRoot: function(data, schema) {
+		var self = this,
+			path = self.path,
+			schemaData = getSchemaByRef(schema, self.schemas),
+			errors;
+
+		debug('validateRoot', data, schema, schemaData, self.path);
+
+		if (Array.isArray(schemaData)) {
+			errors = self.validateArray(data, schemaData);
+		}
+		else if (isPlainObject(schemaData)) {
+			errors = self.validateObject(data, schemaData);
+		}
+		else {
+			if (schemaData === JSOND_BOOLEAN) {
+				errors = validateBoolean(data, path);
+			}
+			else if (schemaData === JSOND_NUMBER) {
+				errors = validateNumber(data, path);
+			}
+			else if (schemaData === JSOND_INTEGER) {
+				errors = validateInteger(data, path);
+			}
+			else if (schemaData === JSOND_STRING) {
+				errors = validateString(data, path);
+			}
+			else if (typeof schemaData === 'string') {
+				errors = validateSpecial(data, schemaData, path);
+			}
+			else {
+				errors = validateConstant(data, schemaData, path);
+			}
+		}
+
+		if (errors.length) {
+			debug('validateRoot errors', errors);
+		}
+
+		return errors;
+	},
+
+	/**
+	 * Validates whether a given data object is a valid array value
+	 *
+	 * @private
+	 *
+	 * @param  {Mixed} data   An arbitrary data object
+	 * @param  {Mixed} schema An arbitrary JSOND text
+	 *
+	 * @return {Object}       An errors list
+	 */
+	validateArray: function(data, schema) {
+		var self = this,
+			errors = [],
+			di, dl,
+			si, sl,
+			valid,
+			errs;
+
+		debug('validateArray', data, schema);
+
+		if (!Array.isArray(data)) {
+			return [{
+				code: 'ARRAY_REQUIRED',
+				path: [].concat(self.path)
+			}];
+		}
+
+		sl = schema.length;
+
+		// Using `for` due to speed over native `forEach` or `reduce`
+		for (di = 0, dl = data.length; di &lt; dl; di++) {
+			valid = false;
+
+			self.path.push(di);
+
+			for (si = 0; si &lt; sl; si++) {
+				errs = self.validateRoot(data[di], schema[si]);
+				if (!errs.length) {
+					valid = true;
+					break;
+				}
+			}
+
+			if (!valid) {
+				// If there are multiple definitions for an array item
+				// we have to return a generic error
+				if (sl > 1) {
+					errors.push({
+						code: 'ARRAY_ITEM',
+						path: [].concat(self.path)
+					});
+				}
+				// Otherwise we can safely return the error that
+				// caused the validation to fail
+				else {
+					errors = errors.concat(errs);
+				}
+			}
+
+			self.path.pop();
+		}
+
+		return errors;
+	},
+
+	/**
+	 * Validates whether a given data object is a valid object value
+	 *
+	 * @private
+	 *
+	 * @param  {Mixed} data   An arbitrary data object
+	 * @param  {Mixed} schema An arbitrary JSOND text
+	 *
+	 * @return {Object}       An errors list
+	 */
+	validateObject: function(data, schema) {
+		var self = this,
+			errors = [],
+			keysData = Object.keys(data),
+			keysSchema = Object.keys(schema),
+			l = keysSchema.length,
+			keySchema,
+			keyData,
+			keyIndex,
+			optional,
+			errs,
+			i;
+
+		debug('validateObject', data, schema);
+
+		for (i = 0; i &lt; l; i++) {
+			keyData = keySchema = keysSchema[i];
+			optional = keySchema.match(JSOND_OPTIONAL_PATTERN);
+			if (optional) {
+				keyData = keyData.replace(JSOND_OPTIONAL_PATTERN, '');
+			}
+			keyIndex = keysData.indexOf(keyData);
+			errs = [];
+
+			self.path.push(keySchema);
+			if (keyIndex === -1 &amp;&amp; !optional) {
+				errors.push({
+					code: 'OBJECT_PROPERTY_REQUIRED',
+					path: [].concat(self.path)
+				});
+			}
+			else if (keyIndex !== -1) {
+				errs = self.validateRoot(data[keyData], schema[keySchema]);
+				if (errs.length) {
+					errors = errors.concat(errs);
+				}
+				keysData.splice(keyIndex, 1);
+			}
+			self.path.pop();
+		}
+
+		if (keysData.length) {
+			keysData.forEach(function(key) {
+				errors.push({
+					code: 'OBJECT_PROPERTIES_ADDITIONAL',
+					path: [].concat(self.path, key)
+				});
+			});
+		}
+
+		return errors;
+	}
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Mon Apr 13 2015 21:07:27 GMT+0000 (UTC) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
