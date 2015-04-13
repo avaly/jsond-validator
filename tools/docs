@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# Builds the documentation and publishes it to gh-pages branch
+#
+
+PROJECT="jsond-validator"
+DOCS_BUILD="docs"
+DOCS_REPO="tmp/docs"
+
+rm -rf $DOCS_BUILD $DOCS_REPO
+
+# clone the gh-pages branch
+git clone -v --branch gh-pages https://github.com/avaly/$PROJECT.git $DOCS_REPO
+
+# generate the docs
+node_modules/.bin/jsdoc -c jsdoc.json --verbose
+
+VERSION=$(ls $DOCS_BUILD/$PROJECT/ | sort -n | head -1)
+cd $DOCS_BUILD/$PROJECT/$VERSION
+rsync -rt --exclude=".git" . ../../../$DOCS_REPO
+cd ../../../
+
+# setup git credentials in gh-pages repository
+cd $DOCS_REPO
+git config credential.helper "store --file=.git/credentials"
+echo "https://${GH_TOKEN}:@github.com" > .git/credentials
+git config --global user.name "CircleCI"
+git config --global user.email "ci@circleci.com"
+
+# commit & push docs
+git add --all .
+git commit -m "Documentation update for $CIRCLE_SHA1"
+git --no-pager log -n 3
+git push origin gh-pages
