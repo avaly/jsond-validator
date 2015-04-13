@@ -2,6 +2,11 @@ machine:
   node:
     version: 0.10.33
 
+general:
+  branches:
+    ignore:
+      - gh-pages
+
 test:
   pre:
     - "npm run lint"
@@ -9,3 +14,9 @@ test:
     - "npm run test"
     - "npm run test-client"
     - "npm run test-saucelabs"
+
+deployment:
+  docs:
+    branch: master
+    commands:
+      - "./tools/docs"

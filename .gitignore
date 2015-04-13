@@ -1,4 +1,5 @@
-npm-debug.log
+docs
 node_modules
 tmp
 test/client/cases.js
+npm-debug.log
