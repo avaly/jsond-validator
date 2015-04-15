@@ -1,8 +1,27 @@
 {
   "name": "jsond-validator",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "JSOND Validator",
-  "author": "Valentin Agachi",
+  "author": {
+    "name": "Valentin Agachi",
+    "url": "http://agachi.name/"
+  },
+  "homepage": "https://github.com/avaly/jsond-validator",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/avaly/jsond-validator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/avaly/jsond-validator/issues"
+  },
+  "keywords": [
+    "json",
+    "jsond",
+    "validator",
+    "schema",
+    "jsonschema"
+  ],
+  "license": "ISC",
   "main": "lib/index.js",
   "files": [
     "lib/index.js",
@@ -20,7 +39,6 @@
     "precommit": "npm run lint",
     "prepush": "npm test"
   },
-  "license": "ISC",
   "dependencies": {},
   "devDependencies": {
     "debug": "^2.1.3",

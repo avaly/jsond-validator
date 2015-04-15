@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Publish the package to NPM
+#
+
+TAG=$(git tag -l --contains HEAD)
+
+if [[ -z $TAG ]]; then
+	echo "No tag found. Skipping publish."
+else
+	echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+	npm publish
+fi
