@@ -3,12 +3,14 @@
 # Publish the package to NPM
 #
 
-echo "git describe"
-git describe
+TAG=$(git tag -l --contains HEAD)
+echo $TAG
 
-echo "git tag -l"
-git tag -l --contains HEAD
+if [[ -z $TAG ]]; then
+	echo "No tag found."
+else
+	echo "Tag found ${TAG}."
+fi
 
 echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-
 # npm publish
