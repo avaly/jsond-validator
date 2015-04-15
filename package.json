@@ -1,6 +1,6 @@
 {
   "name": "jsond-validator",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "JSOND Validator",
   "author": "Valentin Agachi",
   "main": "lib/index.js",
