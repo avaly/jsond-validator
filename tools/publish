@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Publish the package to NPM
+#
+
+git describe
+
+echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+
+# npm publish

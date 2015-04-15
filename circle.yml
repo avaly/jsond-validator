@@ -8,15 +8,19 @@ general:
       - gh-pages
 
 test:
-  pre:
-    - "npm run lint"
+  # pre:
+  #   - "npm run lint"
   override:
     - "npm run test"
-    - "npm run test-client"
-    - "npm run test-saucelabs"
+    # - "npm run test-client"
+    # - "npm run test-saucelabs"
 
 deployment:
   docs:
     branch: master
     commands:
       - "./tools/docs"
+  npm:
+    branch: feature/npm-publish
+    commands:
+      - "./tools/publish"
