@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 0.10.33
+    version: 4.3.0
 
 general:
   branches:
@@ -11,9 +11,11 @@ test:
   pre:
     - "npm run lint"
   override:
-    - "npm run test"
-    - "npm run test-client"
-    - "npm run test-saucelabs"
+    - "nvm use 0.12.9 && npm run test"
+    - "nvm use 4.3.0 && npm run test"
+    - "nvm use 5.7.0 && npm run test"
+    - "nvm use 4.3.0 && npm run test-client"
+    - "nvm use 4.3.0 && npm run test-saucelabs"
 
 deployment:
   docs:

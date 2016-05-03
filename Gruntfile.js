@@ -8,7 +8,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-jscs');
 	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-mocha');
-	grunt.loadNpmTasks('grunt-mocha-test');
 	grunt.loadNpmTasks('grunt-saucelabs');
 	grunt.loadNpmTasks('grunt-webpack');
 
@@ -60,19 +59,6 @@ module.exports = function(grunt) {
 					reporter: 'List',
 					run: true
 				}
-			}
-		},
-		// Node mocha tests
-		mochaTest: {
-			test: {
-				options: {
-					ui: 'tdd',
-					reporter: 'dot',
-					clearRequireCache: true
-				},
-				src: [
-					'test/**/*.js'
-				]
 			}
 		},
 		'saucelabs-mocha': {
