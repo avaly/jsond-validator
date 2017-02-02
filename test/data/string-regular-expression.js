@@ -1,5 +1,4 @@
 module.exports = [
-	// valid
 	{
 		name: 'pattern if/else',
 		schema: 'a(b|c)',
@@ -56,6 +55,33 @@ module.exports = [
 			{
 				name: 'invalid',
 				data: 'fa5!6b.',
+				valid: false,
+				errors: [
+					{
+						code: 'STRING_PATTERN',
+						path: [ '$' ]
+					}
+				]
+			}
+		]
+	},
+	{
+		name: 'any characters with minimum length',
+		schema: '.{4,}',
+		tests: [
+			{
+				name: 'valid',
+				data: 'abcd',
+				valid: true
+			},
+			{
+				name: 'valid',
+				data: 'abcde',
+				valid: true
+			},
+			{
+				name: 'invalid',
+				data: 'abc',
 				valid: false,
 				errors: [
 					{
