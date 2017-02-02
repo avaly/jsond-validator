@@ -22,5 +22,5 @@ deployment:
   docs:
     branch: master
     commands:
-      - "./tools/docs"
+      # - "./tools/docs"
       - "./tools/publish"
