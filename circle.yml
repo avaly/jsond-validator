@@ -16,6 +16,7 @@ test:
     - "nvm use 6.1.0 && npm run test"
     - "nvm use 6.1.0 && npm run test-client"
     - "nvm use 6.1.0 && npm run test-saucelabs"
+    - "nvm use 6.1.0 && npm run coverage"
 
 deployment:
   docs:

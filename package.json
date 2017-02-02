@@ -31,15 +31,17 @@
     "validate-jsond": "./bin/validate-jsond"
   },
   "scripts": {
-    "lint": "grunt jshint && grunt jscs",
     "build": "grunt webpack",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha && codecov",
+    "lint": "grunt jshint && grunt jscs",
+    "prepush": "npm run lint && npm test",
     "test": "mocha test/*.js",
     "test-client": "npm run build && grunt mocha",
-    "test-saucelabs": "npm run build && grunt saucelabs",
-    "prepush": "npm run lint && npm test"
+    "test-saucelabs": "npm run build && grunt saucelabs"
   },
   "dependencies": {},
   "devDependencies": {
+    "codecov": "^1.0.1",
     "debug": "^2.1.3",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
@@ -52,6 +54,7 @@
     "grunt-saucelabs": "^9.0.0",
     "grunt-webpack": "^2.0.1",
     "husky": "^0.13.1",
+    "istanbul": "^0.4.5",
     "jsdoc": "^3.3.0-beta3",
     "jshint-stylish": "^2.2.0",
     "minami": "^1.1.0",
