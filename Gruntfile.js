@@ -74,12 +74,20 @@ module.exports = function(grunt) {
 					'public': 'public',
 					browsers: [
 						{
-							browserName: 'googlechrome',
-							platform: 'Windows 8'
+							browserName: 'chrome',
+							platform: 'Windows 10'
 						},
 						{
 							browserName: 'firefox',
-							platform: 'Windows 8'
+							platform: 'Windows 10'
+						},
+						{
+							browserName: 'MicrosoftEdge',
+							platform: 'Windows 10'
+						},
+						{
+							browserName: 'internet explorer',
+							platform: 'Windows 10'
 						},
 						{
 							browserName: 'internet explorer',
@@ -95,6 +103,14 @@ module.exports = function(grunt) {
 							browserName: 'internet explorer',
 							platform: 'Windows 7',
 							version: '9.0'
+						},
+						{
+							browserName: 'chrome',
+							platform: 'Linux'
+						},
+						{
+							browserName: 'firefox',
+							platform: 'Linux'
 						},
 						{
 							browserName: 'safari',
