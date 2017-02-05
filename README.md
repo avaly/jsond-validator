@@ -15,6 +15,15 @@ A validator for JSON definitions according to the [JSOND specification](http://t
 
 [http://avaly.github.io/jsond-validator](http://avaly.github.io/jsond-validator)
 
+## Tools
+
+A simple script is shipped with this module to verify a JSON file against a
+JSON schema:
+
+```
+validate-jsond INPUT_FILE SCHEMA_FILE
+```
+
 ## Development
 
 ```
@@ -24,7 +33,7 @@ npm run test-client
 
 ## License
 
-Copyright (c) 2015, Valentin Agachi (http://agachi.name)
+Copyright (c) 2015-2017, Valentin Agachi (http://agachi.name)
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
