@@ -1,6 +1,6 @@
 # [JSOND](http://www.jsond.org/) Validator
 
-[![Circle CI](https://img.shields.io/circleci/project/github/avaly/jsond-validator/master.svg)](https://circleci.com/gh/avaly/jsond-validator/tree/master)
+[![Travis CI](https://img.shields.io/travis/avaly/jsond-validator/master.svg)](https://travis-ci.org/avaly/jsond-validator)
 [![Sauce Test Status](https://saucelabs.com/buildstatus/avaly-jsond-v)](https://saucelabs.com/u/avaly-jsond-v)
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/avaly-jsond-v.svg)](https://saucelabs.com/u/avaly-jsond-v)
 [![Code Coverage](https://img.shields.io/codecov/c/github/avaly/jsond-validator.svg)](https://codecov.io/gh/avaly/jsond-validator)

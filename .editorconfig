@@ -12,6 +12,6 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 
 # Special requirements files
-[{package.json,circle.yml}]
+[{package.json,circle.yml,.travis.yml}]
 indent_style = space
 indent_size = 2

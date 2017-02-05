@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - "6"
+  - "4"
+
+cache:
+  yarn: true
+
+script:
+  - npm run lint
+  - npm test
+  - "if [[ $TRAVIS_JOB_NUMBER == *.1 ]]; then npm run test-client; fi"
+  - "if [[ $TRAVIS_JOB_NUMBER == *.1 ]]; then npm run test-saucelabs; fi"
+  - "if [[ $TRAVIS_JOB_NUMBER == *.1 ]]; then npm run coverage; fi"
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: tools/docs
+    on:
+      branch: master
+  - provider: script
+    skip_cleanup: true
+    script: tools/publish
+    on:
+      tags: true
