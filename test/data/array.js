@@ -38,6 +38,17 @@ module.exports = [
 						path: [ '$', 1 ]
 					}
 				]
+			},
+			{
+				name: 'not an array',
+				data: 123,
+				valid: false,
+				errors: [
+					{
+						code: 'ARRAY_REQUIRED',
+						path: [ '$' ]
+					}
+				]
 			}
 		]
 	},
