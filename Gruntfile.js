@@ -124,7 +124,10 @@ module.exports = function(grunt) {
 		webpack: {
 			tests: {
 				entry: {
-					cases: './test/cases.js',
+					cases: [
+						'./test/cases.js',
+						'./test/dereferenced-schema.js'
+					]
 				},
 				output: {
 					path: './test/client/',
