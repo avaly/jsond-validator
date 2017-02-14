@@ -1,0 +1,32 @@
+/**
+ * @flow
+ */
+
+declare type JSONDValidatorSchema =
+	string |
+	Array<JSONDValidatorSchema> |
+	{ [key: string]: JSONDValidatorSchema };
+
+declare type JSONDValidatorError = {
+	code: string,
+	path: Array<string>,
+};
+
+declare type JSONDValidatorResult = {
+	errors: Array<JSONDValidatorError>,
+	valid: boolean,
+	warning?: string,
+};
+
+declare class JSONDValidator {
+  constructor(): void;
+  schemas: { [key: string]: JSONDValidatorSchema };
+	addSchema(id: string, schema: JSONDValidatorSchema): this;
+	getDereferencedSchema(id: string): JSONDValidatorSchema;
+	validate(
+		data: any,
+		schema: string | JSONDValidatorSchema,
+	): JSONDValidatorResult;
+}
+
+declare module.exports: Class<JSONDValidator>;

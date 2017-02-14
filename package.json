@@ -1,6 +1,6 @@
 {
   "name": "jsond-validator",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "JSOND Validator",
   "author": {
     "name": "Valentin Agachi",
@@ -25,6 +25,7 @@
   "main": "lib/index.js",
   "files": [
     "lib/index.js",
+    "lib/index.js.flow",
     "bin/validate-jsond"
   ],
   "bin": {
@@ -35,15 +36,17 @@
     "coverage": "npm run test-coverage && codecov",
     "lint": "grunt jshint && grunt jscs",
     "prepush": "npm run lint && npm test",
-    "test": "mocha test/*.js",
+    "test": "mocha test/*.js && npm run test-flow",
     "test-client": "npm run build && grunt mocha",
     "test-coverage": "istanbul cover node_modules/mocha/bin/_mocha",
+    "test-flow": "cd test/flow/ && ./flow-check.sh",
     "test-saucelabs": "npm run build && grunt saucelabs"
   },
   "dependencies": {},
   "devDependencies": {
     "codecov": "^1.0.1",
     "debug": "^2.1.3",
+    "flow-bin": "^0.39.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-connect": "^1.0.2",

@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 					src: [
 						'bin/*',
 						'lib/**/*.js',
-						'test/!(client)/*.js'
+						'test/!(client|flow)/*.js'
 					]
 				}
 			}
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
 					src: [
 						'bin/*',
 						'lib/**/*.js',
-						'test/!(client)/*.js'
+						'test/!(client|flow)/*.js'
 					]
 				}
 			}
