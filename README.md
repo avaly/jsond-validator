@@ -1,5 +1,7 @@
 # [JSOND](http://www.jsond.org/) Validator
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/avaly/jsond-validator.svg)](https://greenkeeper.io/)
+
 [![Travis CI](https://img.shields.io/travis/avaly/jsond-validator/master.svg)](https://travis-ci.org/avaly/jsond-validator)
 [![Sauce Test Status](https://saucelabs.com/buildstatus/avaly-jsond-v)](https://saucelabs.com/u/avaly-jsond-v)
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/avaly-jsond-v.svg)](https://saucelabs.com/u/avaly-jsond-v)
