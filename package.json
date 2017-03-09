@@ -32,6 +32,7 @@
     "validate-jsond": "./bin/validate-jsond"
   },
   "scripts": {
+    "benchmark": "node benchmark/run.js",
     "build": "grunt webpack",
     "coverage": "npm run test-coverage && codecov",
     "lint": "grunt jshint && grunt jscs",
@@ -44,8 +45,11 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "ajv": "^4.11.4",
+    "benchmark": "^2.1.3",
     "codecov": "^1.0.1",
-    "debug": "^2.1.3",
+    "debug": "^2.6.1",
+    "djv": "^1.0.0-beta",
     "flow-bin": "^0.41.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
@@ -53,17 +57,17 @@
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-jscs": "^3.0.1",
-    "grunt-jsonlint": "^1.0.7",
+    "grunt-jsonlint": "^1.1.0",
     "grunt-mocha": "^1.0.4",
     "grunt-saucelabs": "^9.0.0",
     "grunt-webpack": "^2.0.1",
-    "husky": "^0.13.1",
+    "husky": "^0.13.2",
     "istanbul": "^0.4.5",
-    "jsdoc": "^3.3.0-beta3",
-    "jshint-stylish": "^2.2.0",
-    "minami": "^1.1.0",
+    "jsdoc": "^3.4.3",
+    "jshint-stylish": "^2.2.1",
+    "minami": "^1.1.1",
     "mocha": "^3.2.0",
-    "strip-loader": "^0.1.0",
+    "strip-loader": "^0.1.2",
     "webpack": "^2.2.1"
   }
 }

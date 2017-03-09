@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - "6"
-  - "4"
+  - '6'
+  - '4'
 
 cache:
   yarn: true
@@ -12,6 +12,7 @@ script:
   - "if [[ $TRAVIS_JOB_NUMBER == *.1 ]]; then npm run test-client; fi"
   - "if [[ $TRAVIS_JOB_NUMBER == *.1 ]]; then npm run test-saucelabs; fi"
   - "if [[ $TRAVIS_JOB_NUMBER == *.1 ]]; then npm run coverage; fi"
+  - npm run benchmark
 
 deploy:
   - provider: script
