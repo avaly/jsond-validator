@@ -2,17 +2,17 @@
  * @flow
  */
 
-declare type JSONDValidatorSchema =
+export type JSONDValidatorSchema =
 	string |
 	Array<JSONDValidatorSchema> |
 	{ [key: string]: JSONDValidatorSchema };
 
-declare type JSONDValidatorError = {
+export type JSONDValidatorError = {
 	code: string,
 	path: Array<string>,
 };
 
-declare type JSONDValidatorResult = {
+export type JSONDValidatorResult = {
 	errors: Array<JSONDValidatorError>,
 	valid: boolean,
 	warning?: string,

@@ -19,7 +19,7 @@ deploy:
     skip_cleanup: true
     script: tools/docs
     on:
-      branch: master
+      tags: true
   - provider: script
     skip_cleanup: true
     script: tools/publish

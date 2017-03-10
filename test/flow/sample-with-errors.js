@@ -6,7 +6,7 @@ var JSONDValidator = require('jsond-validator');
 
 var validator = new JSONDValidator();
 
-// $ExpectError
+// This should throw a Flow error
 validator.bogus();
 validator.addSchema('foo', 'number');
 validator.addSchema('bar', ['string']);
@@ -19,10 +19,12 @@ var schema = validator.getDereferencedSchema('ham');
 
 var result = validator.validate(123, 'foo');
 
-// $ExpectError
+// This should throw a Flow error
 result.bogus == null;
 result.valid === true;
 result.errors.forEach(function(error) {
 	error.code;
 	error.path.join(' ');
+	// This should throw a Flow error
+	error.nope;
 });
