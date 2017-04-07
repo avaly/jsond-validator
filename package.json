@@ -53,7 +53,7 @@
     "debug": "^2.6.1",
     "diff": "^3.2.0",
     "djv": "^1.0.0-beta",
-    "flow-bin": "^0.42.0",
+    "flow-bin": "^0.43.1",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-connect": "^1.0.2",
