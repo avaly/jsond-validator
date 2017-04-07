@@ -1,4 +1,5 @@
-var webpack = require('webpack'),
+const path = require('path'),
+	webpack = require('webpack'),
 	WebpackStrip = require('strip-loader');
 
 module.exports = function(grunt) {
@@ -130,7 +131,7 @@ module.exports = function(grunt) {
 					]
 				},
 				output: {
-					path: './test/client/',
+					path: path.resolve('./test/client/'),
 					filename: '[name].js'
 				},
 				module: {

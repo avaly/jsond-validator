@@ -1,7 +1,8 @@
+.secrets/
 coverage/
 docs/
 node_modules
 tmp
 test/client/cases.js
 npm-debug.log
-.secrets
+yarn.lock
