@@ -6,17 +6,17 @@ module.exports = [
 			{
 				name: 'value is start',
 				data: 2,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'value is middle',
 				data: 3,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'value is end',
 				data: 5,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'value is start - 1',
@@ -25,9 +25,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTERVAL_START',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'value is end + 1',
@@ -36,11 +36,11 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTERVAL_END',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
+						path: ['$'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'interval, inclusive start, exclusive end',
@@ -49,12 +49,12 @@ module.exports = [
 			{
 				name: 'value is start',
 				data: 2,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'value is end - 1',
 				data: 4,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'value is start - 1',
@@ -63,9 +63,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTERVAL_START',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'value is end',
@@ -74,11 +74,11 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTERVAL_END',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
+						path: ['$'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'interval, exclusive start, inclusive end',
@@ -87,12 +87,12 @@ module.exports = [
 			{
 				name: 'value is start + 1',
 				data: 3,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'value is end',
 				data: 5,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'value is start',
@@ -101,9 +101,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTERVAL_START',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'value is end + 1',
@@ -112,11 +112,11 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTERVAL_END',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
+						path: ['$'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'interval, inclusive start, open end',
@@ -125,7 +125,7 @@ module.exports = [
 			{
 				name: 'value is Infinity',
 				data: Infinity,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'value is start - 1',
@@ -134,11 +134,11 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTERVAL_START',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
+						path: ['$'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'interval, open start, inclusive end',
@@ -147,7 +147,7 @@ module.exports = [
 			{
 				name: 'value is -Infinity',
 				data: -Infinity,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'value is end + 1',
@@ -156,11 +156,11 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTERVAL_END',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
+						path: ['$'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'interval, number, inclusive start, inclusive end',
@@ -169,7 +169,7 @@ module.exports = [
 			{
 				name: 'value is start',
 				data: 1.33,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'value is start - 0.001',
@@ -178,9 +178,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTERVAL_START',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'value is end + 0.001',
@@ -189,10 +189,10 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTERVAL_END',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
-	}
+						path: ['$'],
+					},
+				],
+			},
+		],
+	},
 ];

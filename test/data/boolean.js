@@ -7,12 +7,12 @@ module.exports = [
 			{
 				name: 'true',
 				data: true,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'false',
 				data: false,
-				valid: true
+				valid: true,
 			},
 			// invalid
 			{
@@ -22,9 +22,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'BOOLEAN_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'number 0',
@@ -33,9 +33,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'BOOLEAN_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'non-empty string',
@@ -44,9 +44,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'BOOLEAN_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'empty string',
@@ -55,9 +55,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'BOOLEAN_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'empty array',
@@ -66,9 +66,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'BOOLEAN_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'empty object',
@@ -77,10 +77,10 @@ module.exports = [
 				errors: [
 					{
 						code: 'BOOLEAN_REQUIRED',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
-	}
+						path: ['$'],
+					},
+				],
+			},
+		],
+	},
 ];

@@ -6,57 +6,57 @@ module.exports = [
 			{
 				name: 'valid',
 				data: {},
-				valid: true
+				valid: true,
 			},
 			{
 				name: '1 property',
 				data: {
-					name: 'Lorem'
+					name: 'Lorem',
 				},
 				valid: false,
 				errors: [
 					{
 						code: 'OBJECT_PROPERTIES_ADDITIONAL',
-						path: [ '$', 'name' ]
-					}
-				]
-			}
-		]
+						path: ['$', 'name'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'object, 1 property',
 		schema: {
-			name: 'string'
+			name: 'string',
 		},
 		tests: [
 			{
 				name: 'valid',
 				data: {
-					name: 'John'
+					name: 'John',
 				},
-				valid: true
+				valid: true,
 			},
 			{
 				name: '1 property type mismatch',
 				data: {
-					name: 123
+					name: 123,
 				},
 				valid: false,
 				errors: [
 					{
 						code: 'STRING_REQUIRED',
-						path: [ '$', 'name' ]
-					}
-				]
-			}
-		]
+						path: ['$', 'name'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'object, 3 properties',
 		schema: {
 			name: 'a(b|c)',
 			age: '[20,99)',
-			manager: 'boolean'
+			manager: 'boolean',
 		},
 		tests: [
 			{
@@ -64,63 +64,63 @@ module.exports = [
 				data: {
 					name: 'ab',
 					age: 35,
-					manager: false
+					manager: false,
 				},
-				valid: true
+				valid: true,
 			},
 			{
 				name: '1 property failed',
 				data: {
 					name: 'ab',
 					age: 19,
-					manager: false
+					manager: false,
 				},
 				valid: false,
 				errors: [
 					{
 						code: 'INTERVAL_START',
-						path: [ '$', 'age' ]
-					}
-				]
-			}
-		]
+						path: ['$', 'age'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'object, 2 properties, 1 optional, both',
 		schema: {
 			name: 'lorem',
-			'location?': 'number'
+			'location?': 'number',
 		},
 		tests: [
 			{
 				name: 'both',
 				data: {
 					name: 'lorem',
-					location: 12.34
+					location: 12.34,
 				},
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'only required',
 				data: {
-					name: 'lorem'
+					name: 'lorem',
 				},
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'only optional',
 				data: {
-					location: 12.34
+					location: 12.34,
 				},
 				valid: false,
 				errors: [
 					{
 						code: 'OBJECT_PROPERTY_REQUIRED',
-						path: [ '$', 'name' ]
-					}
-				]
-			}
-		]
+						path: ['$', 'name'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'object, nested object',
@@ -128,8 +128,8 @@ module.exports = [
 			name: 'string',
 			address: {
 				street: 'string',
-				number: 'integer'
-			}
+				number: 'integer',
+			},
 		},
 		tests: [
 			{
@@ -138,10 +138,10 @@ module.exports = [
 					name: 'John',
 					address: {
 						street: 'Main St.',
-						number: 123
-					}
+						number: 123,
+					},
 				},
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'nested object mismatch',
@@ -149,18 +149,18 @@ module.exports = [
 					name: 'John',
 					address: {
 						street: 'Main St.',
-						number: 'Lorem'
-					}
+						number: 'Lorem',
+					},
 				},
 				valid: false,
 				errors: [
 					{
 						code: 'INTEGER_REQUIRED',
-						path: [ '$', 'address', 'number' ]
-					}
-				]
-			}
-		]
+						path: ['$', 'address', 'number'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'object, all types',
@@ -171,7 +171,7 @@ module.exports = [
 			performance: 'number',
 			range: '[10,20]',
 			specific: '{1,5,9}',
-			nickname: '^(foo|bar|ham)$'
+			nickname: '^(foo|bar|ham)$',
 		},
 		tests: [
 			{
@@ -183,10 +183,10 @@ module.exports = [
 					performance: -12.5,
 					range: 15,
 					specific: 9,
-					nickname: 'bar'
+					nickname: 'bar',
 				},
-				valid: true
-			}
-		]
-	}
+				valid: true,
+			},
+		],
+	},
 ];

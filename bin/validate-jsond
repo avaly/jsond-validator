@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* eslint no-console: 1 */
+
 var fs = require('fs'),
 	Validator = require('../'),
 	validator = new Validator(),
@@ -19,8 +21,7 @@ result = validator.validate(data, schema);
 
 if (result.valid) {
 	console.log('The data is valid according to the JSON definition!');
-}
-else {
+} else {
 	console.log('The data is NOT valid according to the JSON definition!');
 	console.log('');
 	console.log('Errors found:');

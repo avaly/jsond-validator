@@ -1,6 +1,7 @@
 /**
  * @flow
  */
+/* eslint no-unused-vars: 0 */
 
 var JSONDValidator = require('jsond-validator');
 
@@ -12,7 +13,7 @@ validator.addSchema('foo', 'number');
 validator.addSchema('bar', ['string']);
 validator.addSchema('ham', {
 	id: 'string',
-	items: ['string']
+	items: ['string'],
 });
 
 var schema = validator.getDereferencedSchema('ham');

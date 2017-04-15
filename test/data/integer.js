@@ -7,12 +7,12 @@ module.exports = [
 			{
 				name: '1',
 				data: 1,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'integer, 0',
 				data: 0,
-				valid: true
+				valid: true,
 			},
 			// invalid
 			{
@@ -22,9 +22,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTEGER_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'decimals',
@@ -33,9 +33,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTEGER_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 
 			{
@@ -45,9 +45,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTEGER_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'non-empty string',
@@ -56,9 +56,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTEGER_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'array',
@@ -67,9 +67,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTEGER_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'object',
@@ -78,10 +78,10 @@ module.exports = [
 				errors: [
 					{
 						code: 'INTEGER_REQUIRED',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
-	}
+						path: ['$'],
+					},
+				],
+			},
+		],
+	},
 ];

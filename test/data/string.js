@@ -7,12 +7,12 @@ module.exports = [
 			{
 				name: 'non-empty string',
 				data: 'foo',
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'empty string',
 				data: '',
-				valid: true
+				valid: true,
 			},
 			// invalid
 			{
@@ -22,9 +22,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'STRING_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'boolean',
@@ -33,9 +33,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'STRING_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'array',
@@ -44,9 +44,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'STRING_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'object',
@@ -55,10 +55,10 @@ module.exports = [
 				errors: [
 					{
 						code: 'STRING_REQUIRED',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
-	}
+						path: ['$'],
+					},
+				],
+			},
+		],
+	},
 ];

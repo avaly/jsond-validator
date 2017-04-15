@@ -7,22 +7,22 @@ module.exports = [
 			{
 				name: '1',
 				data: 1,
-				valid: true
+				valid: true,
 			},
 			{
 				name: '0',
 				data: 0,
-				valid: true
+				valid: true,
 			},
 			{
 				name: '-1',
 				data: -1,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'decimals',
 				data: 1.5,
-				valid: true
+				valid: true,
 			},
 
 			// invalid
@@ -33,9 +33,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'NUMBER_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'non-empty string',
@@ -44,9 +44,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'NUMBER_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'array',
@@ -55,9 +55,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'NUMBER_REQUIRED',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'object',
@@ -66,10 +66,10 @@ module.exports = [
 				errors: [
 					{
 						code: 'NUMBER_REQUIRED',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
-	}
+						path: ['$'],
+					},
+				],
+			},
+		],
+	},
 ];

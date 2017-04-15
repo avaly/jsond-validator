@@ -4,22 +4,22 @@ sample-with-errors-named-imports.js:16
  16: result.bogus == null;
      ^^^^^^ object type
 
-sample-with-errors.js:10
- 10: validator.bogus();
+sample-with-errors.js:11
+ 11: validator.bogus();
                ^^^^^ property `bogus`. Property not found in
- 10: validator.bogus();
+ 11: validator.bogus();
      ^^^^^^^^^ JSONDValidator
 
-sample-with-errors.js:23
- 23: result.bogus == null;
+sample-with-errors.js:24
+ 24: result.bogus == null;
             ^^^^^ property `bogus`. Property not found in
- 23: result.bogus == null;
+ 24: result.bogus == null;
      ^^^^^^ object type
 
-sample-with-errors.js:29
- 29: 	error.nope;
+sample-with-errors.js:30
+ 30: 	error.nope;
      	      ^^^^ property `nope`. Property not found in
- 29: 	error.nope;
+ 30: 	error.nope;
      	^^^^^ object type
 
 

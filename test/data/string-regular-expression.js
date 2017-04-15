@@ -6,7 +6,7 @@ module.exports = [
 			{
 				name: 'valid',
 				data: 'ab',
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'invalid',
@@ -15,11 +15,11 @@ module.exports = [
 				errors: [
 					{
 						code: 'STRING_PATTERN',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
+						path: ['$'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'pattern begin/end, match',
@@ -28,7 +28,7 @@ module.exports = [
 			{
 				name: 'valid',
 				data: 'c',
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'invalid',
@@ -37,11 +37,11 @@ module.exports = [
 				errors: [
 					{
 						code: 'STRING_PATTERN',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
+						path: ['$'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'pattern character list, match',
@@ -50,7 +50,7 @@ module.exports = [
 			{
 				name: 'valid',
 				data: 'd2541a',
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'invalid',
@@ -59,11 +59,11 @@ module.exports = [
 				errors: [
 					{
 						code: 'STRING_PATTERN',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
+						path: ['$'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'any characters with minimum length',
@@ -72,12 +72,12 @@ module.exports = [
 			{
 				name: 'valid',
 				data: 'abcd',
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'valid',
 				data: 'abcde',
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'invalid',
@@ -86,10 +86,10 @@ module.exports = [
 				errors: [
 					{
 						code: 'STRING_PATTERN',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
-	}
+						path: ['$'],
+					},
+				],
+			},
+		],
+	},
 ];

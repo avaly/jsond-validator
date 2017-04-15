@@ -1,3 +1,5 @@
+/* eslint no-console: 0 */
+
 const assert = require('assert');
 const ajv = require('ajv');
 const djv = require('djv');
@@ -37,10 +39,7 @@ function testAll() {
 
 	const resultJSONDValidatorError = validateJSONDValidator(inputInvalid);
 	assert(!resultJSONDValidatorError.valid, 'valid');
-	assert(
-		resultJSONDValidatorError.errors.length > 0,
-		'errors.length > 0'
-	);
+	assert(resultJSONDValidatorError.errors.length > 0, 'errors.length > 0');
 
 	const resultDJVSuccess = validateDJV(inputValid);
 	assert(typeof resultDJVSuccess === 'undefined', 'valid result');
@@ -69,12 +68,12 @@ function runAll() {
 			validateAJV(inputValid);
 		})
 		.on('cycle', function(event) {
-		  console.log(String(event.target));
+			console.log(String(event.target));
 		})
 		.on('complete', function() {
-		  console.log('Fastest is ' + this.filter('fastest').map('name'));
+			console.log('Fastest is ' + this.filter('fastest').map('name'));
 		})
-		.run({ 'async': true });
+		.run({ async: true });
 }
 
 testAll();

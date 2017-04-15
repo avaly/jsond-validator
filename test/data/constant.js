@@ -7,7 +7,7 @@ module.exports = [
 			{
 				name: 'true',
 				data: true,
-				valid: true
+				valid: true,
 			},
 			// invalid
 			{
@@ -17,9 +17,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'CONSTANT',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'integer',
@@ -28,11 +28,11 @@ module.exports = [
 				errors: [
 					{
 						code: 'CONSTANT',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
+						path: ['$'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'number, -1',
@@ -42,7 +42,7 @@ module.exports = [
 			{
 				name: '-1',
 				data: -1,
-				valid: true
+				valid: true,
 			},
 			// invalid
 			{
@@ -52,9 +52,9 @@ module.exports = [
 				errors: [
 					{
 						code: 'CONSTANT',
-						path: [ '$' ]
-					}
-				]
+						path: ['$'],
+					},
+				],
 			},
 			{
 				name: 'string',
@@ -63,11 +63,11 @@ module.exports = [
 				errors: [
 					{
 						code: 'CONSTANT',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
+						path: ['$'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'complex object',
@@ -75,7 +75,7 @@ module.exports = [
 			id: 'integer',
 			tag: 123,
 			name: 'lorem',
-			active: false
+			active: false,
 		},
 		tests: [
 			// valid
@@ -85,9 +85,9 @@ module.exports = [
 					id: 123456,
 					tag: 123,
 					name: 'lorem',
-					active: false
+					active: false,
 				},
-				valid: true
+				valid: true,
 			},
 			// invalid
 			{
@@ -96,15 +96,15 @@ module.exports = [
 					id: '123456',
 					tag: 123,
 					name: 'lorem',
-					active: false
+					active: false,
 				},
 				valid: false,
 				errors: [
 					{
 						code: 'INTEGER_REQUIRED',
-						path: [ '$', 'id' ]
-					}
-				]
+						path: ['$', 'id'],
+					},
+				],
 			},
 			{
 				name: 'invalid tag',
@@ -112,15 +112,15 @@ module.exports = [
 					id: 123456,
 					tag: 1234,
 					name: 'lorem',
-					active: false
+					active: false,
 				},
 				valid: false,
 				errors: [
 					{
 						code: 'CONSTANT',
-						path: [ '$', 'tag' ]
-					}
-				]
+						path: ['$', 'tag'],
+					},
+				],
 			},
 			{
 				name: 'invalid name',
@@ -128,15 +128,15 @@ module.exports = [
 					id: 123456,
 					tag: 123,
 					name: 'wrong',
-					active: false
+					active: false,
 				},
 				valid: false,
 				errors: [
 					{
 						code: 'STRING_PATTERN',
-						path: [ '$', 'name' ]
-					}
-				]
+						path: ['$', 'name'],
+					},
+				],
 			},
 			{
 				name: 'invalid active',
@@ -144,16 +144,16 @@ module.exports = [
 					id: 123456,
 					tag: 123,
 					name: 'lorem',
-					active: true
+					active: true,
 				},
 				valid: false,
 				errors: [
 					{
 						code: 'CONSTANT',
-						path: [ '$', 'active' ]
-					}
-				]
-			}
-		]
-	}
+						path: ['$', 'active'],
+					},
+				],
+			},
+		],
+	},
 ];

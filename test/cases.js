@@ -1,19 +1,21 @@
-var assert = require('assert'),
-	Validator = require('../'),
-	tests = [
-		'boolean',
-		'integer',
-		'number',
-		'interval',
-		'set',
-		'string',
-		'string-regular-expression',
-		'array',
-		'object',
-		'constant',
-		'reference',
-		'example-1'
-	];
+/* eslint no-console: 0 */
+
+var assert = require('assert');
+var Validator = require('../');
+var tests = [
+	'boolean',
+	'integer',
+	'number',
+	'interval',
+	'set',
+	'string',
+	'string-regular-expression',
+	'array',
+	'object',
+	'constant',
+	'reference',
+	'example-1',
+];
 
 tests.forEach(function(testCaseFile) {
 	var testCases = require('./data/' + testCaseFile);
@@ -24,14 +26,13 @@ tests.forEach(function(testCaseFile) {
 		}
 		testCase.tests.forEach(function(testData, testIndex) {
 			var testName = [
-					testCaseFile,
-					testCase.name,
-					(testData.name || testIndex)
-				].join(' - ');
+				testCaseFile,
+				testCase.name,
+				testData.name || testIndex,
+			].join(' - ');
 
 			test(testName, function() {
-				var validator = new Validator(),
-					result;
+				var validator = new Validator(), result;
 
 				if (testCase.schemas) {
 					Object.keys(testCase.schemas).forEach(function(key) {
@@ -41,14 +42,12 @@ tests.forEach(function(testCaseFile) {
 
 				result = validator.validate(testData.data, testCase.schema);
 
-				assert.equal(result.valid, testData.valid,
-					'`valid` matches expected');
+				assert.equal(result.valid, testData.valid, '`valid` matches expected');
 
 				if (!result.valid) {
 					if (testData.errors) {
 						assert.deepEqual(result.errors, testData.errors);
-					}
-					else {
+					} else {
 						console.log(result.errors);
 						assert.ok(false, 'Missing errors defined for test!');
 					}

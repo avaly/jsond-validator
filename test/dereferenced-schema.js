@@ -1,5 +1,5 @@
-var assert = require('assert'),
-	Validator = require('../');
+var assert = require('assert');
+var Validator = require('../');
 
 test('dereferenced-schema', function() {
 	var schemas = {
@@ -8,11 +8,11 @@ test('dereferenced-schema', function() {
 			id: 'third.jsond',
 			list: ['third.jsond'],
 			object: {
-				deep: 'fourth.jsond'
-			}
+				deep: 'fourth.jsond',
+			},
 		},
 		'third.jsond': '^u[0-9]+$',
-		'fourth.jsond': '(10-99]'
+		'fourth.jsond': '(10-99]',
 	};
 	var validator = new Validator();
 
@@ -26,8 +26,8 @@ test('dereferenced-schema', function() {
 			id: '^u[0-9]+$',
 			list: ['^u[0-9]+$'],
 			object: {
-				deep: '(10-99]'
-			}
+				deep: '(10-99]',
+			},
 		}
 	);
 });

@@ -2,14 +2,14 @@ module.exports = [
 	{
 		name: 'reference, string',
 		schemas: {
-			'test.jsond': 'string'
+			'test.jsond': 'string',
 		},
 		schema: 'test.jsond',
 		tests: [
 			{
 				name: 'valid',
 				data: 'foo',
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'invalid',
@@ -18,57 +18,57 @@ module.exports = [
 				errors: [
 					{
 						code: 'STRING_REQUIRED',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
+						path: ['$'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'reference, chained',
 		schemas: {
 			'http://foo.com/first.jsond': 'http://bar.com/second.jsond',
 			'http://bar.com/second.jsond': {
-				id: 'http://ham.com/third.jsond'
+				id: 'http://ham.com/third.jsond',
 			},
-			'http://ham.com/third.jsond': '^u[0-9]+$'
+			'http://ham.com/third.jsond': '^u[0-9]+$',
 		},
 		schema: 'http://foo.com/first.jsond',
 		tests: [
 			{
 				name: 'valid',
 				data: {
-					id: 'u12'
+					id: 'u12',
 				},
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'invalid second ref',
 				data: {
 					id: 'u12',
-					extra: 1
+					extra: 1,
 				},
 				valid: false,
 				errors: [
 					{
 						code: 'OBJECT_PROPERTIES_ADDITIONAL',
-						path: [ '$', 'extra' ]
-					}
-				]
+						path: ['$', 'extra'],
+					},
+				],
 			},
 			{
 				name: 'invalid third ref',
 				data: {
-					id: 'u'
+					id: 'u',
 				},
 				valid: false,
 				errors: [
 					{
 						code: 'STRING_PATTERN',
-						path: [ '$', 'id' ]
-					}
-				]
-			}
-		]
-	}
+						path: ['$', 'id'],
+					},
+				],
+			},
+		],
+	},
 ];

@@ -7,20 +7,14 @@ var assert = require('assert'),
 suite('validate-jsond', function() {
 	test('help message', function() {
 		var result = execFileSync(BIN_PATH);
-		assert.equal(
-			result.toString(),
-			'Usage: validate-jsond INPUT SCHEMA\n'
-		);
+		assert.equal(result.toString(), 'Usage: validate-jsond INPUT SCHEMA\n');
 	});
 
 	test('valid', function() {
-		var result = execFileSync(
-			BIN_PATH,
-			[
-				FIXTURES_PATH + '/example-1-valid.json',
-				FIXTURES_PATH + '/example-1-schema.json'
-			]
-		);
+		var result = execFileSync(BIN_PATH, [
+			FIXTURES_PATH + '/example-1-valid.json',
+			FIXTURES_PATH + '/example-1-schema.json',
+		]);
 		assert.equal(
 			result.toString(),
 			'The data is valid according to the JSON definition!\n'
@@ -29,16 +23,17 @@ suite('validate-jsond', function() {
 
 	test('invalid', function() {
 		try {
-			execFileSync(
-				BIN_PATH,
-				[
-					FIXTURES_PATH + '/example-1-invalid.json',
-					FIXTURES_PATH + '/example-1-schema.json'
-				]
-			);
-		} catch(err) {
+			execFileSync(BIN_PATH, [
+				FIXTURES_PATH + '/example-1-invalid.json',
+				FIXTURES_PATH + '/example-1-schema.json',
+			]);
+		} catch (err) {
 			const stdout = err.stdout.toString();
-			assert(stdout.indexOf('The data is NOT valid according to the JSON definition!') > -1);
+			assert(
+				stdout.indexOf(
+					'The data is NOT valid according to the JSON definition!'
+				) > -1
+			);
 			assert(stdout.indexOf('INTEGER_REQUIRED') > -1);
 		}
 	});

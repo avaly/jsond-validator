@@ -12,8 +12,8 @@ module.exports = [
 				url: 'string',
 				category: 'integer',
 				price: 'number',
-				reduced: 'boolean'
-			}
+				reduced: 'boolean',
+			},
 		],
 		tests: [
 			{
@@ -25,7 +25,7 @@ module.exports = [
 						url: 'http://host.com/foo-bar',
 						category: 234,
 						price: 12.34,
-						reduced: false
+						reduced: false,
 					},
 					{
 						id: 234,
@@ -33,10 +33,10 @@ module.exports = [
 						url: 'http://host.com/bar-ham',
 						category: 234,
 						price: 12,
-						reduced: true
-					}
+						reduced: true,
+					},
 				],
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'property mismatch',
@@ -47,7 +47,7 @@ module.exports = [
 						url: 'http://host.com/foo-bar',
 						category: 234,
 						price: 12.34,
-						reduced: false
+						reduced: false,
 					},
 					{
 						id: 234,
@@ -55,16 +55,16 @@ module.exports = [
 						url: 'http://host.com/bar-ham',
 						category: 234.5,
 						price: 12,
-						reduced: true
-					}
+						reduced: true,
+					},
 				],
 				valid: false,
 				errors: [
 					{
 						code: 'INTEGER_REQUIRED',
-						path: [ '$', 1, 'category' ]
-					}
-				]
+						path: ['$', 1, 'category'],
+					},
+				],
 			},
 			{
 				name: 'property missing',
@@ -74,7 +74,7 @@ module.exports = [
 						url: 'http://host.com/foo-bar',
 						category: 234,
 						price: 12.34,
-						reduced: false
+						reduced: false,
 					},
 					{
 						id: 234,
@@ -82,17 +82,17 @@ module.exports = [
 						url: 'http://host.com/bar-ham',
 						category: 234,
 						price: 12,
-						reduced: true
-					}
+						reduced: true,
+					},
 				],
 				valid: false,
 				errors: [
 					{
 						code: 'OBJECT_PROPERTY_REQUIRED',
-						path: [ '$', 0, 'slug' ]
-					}
-				]
-			}
-		]
-	}
+						path: ['$', 0, 'slug'],
+					},
+				],
+			},
+		],
+	},
 ];

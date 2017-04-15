@@ -6,7 +6,7 @@ module.exports = [
 			{
 				name: 'valid',
 				data: 1,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'no match',
@@ -15,11 +15,11 @@ module.exports = [
 				errors: [
 					{
 						code: 'NOT_IN_SET',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
+						path: ['$'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'set, 2 values',
@@ -28,9 +28,9 @@ module.exports = [
 			{
 				name: 'valid',
 				data: 2,
-				valid: true
-			}
-		]
+				valid: true,
+			},
+		],
 	},
 	{
 		name: 'set, 3 values, number',
@@ -39,7 +39,7 @@ module.exports = [
 			{
 				name: 'valid',
 				data: 3.5,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'no match',
@@ -48,11 +48,11 @@ module.exports = [
 				errors: [
 					{
 						code: 'NOT_IN_SET',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
+						path: ['$'],
+					},
+				],
+			},
+		],
 	},
 	{
 		name: 'set, 4 values, negative numbers',
@@ -61,7 +61,7 @@ module.exports = [
 			{
 				name: 'valid',
 				data: -2,
-				valid: true
+				valid: true,
 			},
 			{
 				name: 'no match',
@@ -70,10 +70,10 @@ module.exports = [
 				errors: [
 					{
 						code: 'NOT_IN_SET',
-						path: [ '$' ]
-					}
-				]
-			}
-		]
-	}
+						path: ['$'],
+					},
+				],
+			},
+		],
+	},
 ];
