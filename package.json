@@ -72,5 +72,12 @@
     "mocha": "^3.2.0",
     "strip-loader": "^0.1.2",
     "webpack": "^2.3.3"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "ajv",
+      "djv",
+      "webpack"
+    ]
   }
 }
