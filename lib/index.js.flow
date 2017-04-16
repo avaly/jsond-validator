@@ -21,12 +21,9 @@ export type JSONDValidatorResult = {
 declare class JSONDValidator {
 	constructor(): void,
 	schemas: { [key: string]: JSONDValidatorSchema },
-	addSchema(id: string, schema: JSONDValidatorSchema): this,
-	getDereferencedSchema(id: string): JSONDValidatorSchema,
-	validate(
-		data: any,
-		schema: string | JSONDValidatorSchema
-	): JSONDValidatorResult,
+	addSchema(schemaID: string, schema: JSONDValidatorSchema): this,
+	getDereferencedSchema(schemaID: string): JSONDValidatorSchema,
+	validate(data: any, schemaID: string): JSONDValidatorResult,
 }
 
 declare module.exports: Class<JSONDValidator>;

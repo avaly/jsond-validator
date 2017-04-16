@@ -5,7 +5,7 @@ module.exports = [
 		url: 'http://host.com/foo-bar',
 		category: 'string',
 		price: 12.34,
-		reduced: false
+		reduced: false,
 	},
 	{
 		id: 234,
@@ -13,6 +13,6 @@ module.exports = [
 		url: 'http://host.com/bar-ham',
 		category: 234,
 		price: 12,
-		reduced: true
+		reduced: true,
 	},
 ];

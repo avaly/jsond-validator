@@ -1,23 +1,22 @@
 #!/usr/bin/env node
 
-/* eslint no-console: 1 */
+/* eslint no-console: 0 */
 
-var fs = require('fs'),
-	Validator = require('../'),
-	validator = new Validator(),
-	data,
-	schema,
-	result;
+const fs = require('fs');
+const Validator = require('../');
+const validator = new Validator();
 
 if (process.argv.length < 4) {
 	console.log('Usage: validate-jsond INPUT SCHEMA');
 	process.exit(0);
 }
 
-data = JSON.parse(fs.readFileSync(process.argv[2], 'utf-8'));
-schema = JSON.parse(fs.readFileSync(process.argv[3], 'utf-8'));
+const data = JSON.parse(fs.readFileSync(process.argv[2], 'utf-8'));
+const schema = JSON.parse(fs.readFileSync(process.argv[3], 'utf-8'));
 
-result = validator.validate(data, schema);
+validator.addSchema('input', schema);
+
+const result = validator.validate(data, 'input');
 
 if (result.valid) {
 	console.log('The data is valid according to the JSON definition!');

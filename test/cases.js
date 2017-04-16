@@ -1,6 +1,23 @@
 /* eslint no-console: 0 */
 
 var assert = require('assert');
+
+var testJSONSchema;
+if (process.env.JSONSCHEMA) {
+	// var isMyJSONValid = require('is-my-json-valid');
+	// testJSONSchema = function(testCase, testData) {
+	// 	var isMyJSONValidValidator = isMyJSONValid(testCase.jsonschema, {
+	// 		greedy: true,
+	// 	});
+	// 	var isMyJSONValidResult = isMyJSONValidValidator(testData.data);
+	// 	assert.equal(
+	// 		isMyJSONValidResult,
+	// 		testData.valid,
+	// 		'`isMyJSONValidResult` matches `valid`'
+	// 	);
+	// };
+}
+
 var Validator = require('../');
 
 var testCasesAll = {
@@ -21,11 +38,11 @@ var testCasesAll = {
 Object.keys(testCasesAll).forEach(function(testCaseFile) {
 	var testCases = testCasesAll[testCaseFile];
 
-	testCases.forEach(function(testCase) {
+	testCases.slice(0, 100).forEach(function(testCase) {
 		if (!testCase.tests) {
 			return;
 		}
-		testCase.tests.forEach(function(testData, testIndex) {
+		testCase.tests.slice(0, 100).forEach(function(testData, testIndex) {
 			var testName = [
 				testCaseFile,
 				testCase.name,
@@ -33,15 +50,22 @@ Object.keys(testCasesAll).forEach(function(testCaseFile) {
 			].join(' - ');
 
 			test(testName, function() {
-				var validator = new Validator(), result;
+				var validator = new Validator();
 
 				if (testCase.schemas) {
 					Object.keys(testCase.schemas).forEach(function(key) {
 						validator.addSchema(key, testCase.schemas[key]);
 					});
 				}
+				if (testCase.schema) {
+					validator.addSchema(testCase.name, testCase.schema);
+				}
 
-				result = validator.validate(testData.data, testCase.schema);
+				if (testJSONSchema) {
+					testJSONSchema(testCase, testData);
+				}
+
+				var result = validator.validate(testData.data, testCase.name);
 
 				assert.equal(result.valid, testData.valid, '`valid` matches expected');
 

@@ -5,6 +5,6 @@ module.exports = [
 		url: 'string',
 		category: 'integer',
 		price: 'number',
-		reduced: 'boolean'
-	}
+		reduced: 'boolean',
+	},
 ];

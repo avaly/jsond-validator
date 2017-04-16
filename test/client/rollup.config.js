@@ -13,11 +13,11 @@ module.exports = {
 		replace({
 			patterns: [
 				{
-					test: "debug = require('debug')('jsond-validator')",
+					test: "logger = require('debug')('jsond-validator')",
 					replace: '',
 				},
 				{
-					test: /debug\(.+\);/g,
+					test: /_DEBUG_ && logger\(.+\);/g,
 					replace: '',
 				},
 			],

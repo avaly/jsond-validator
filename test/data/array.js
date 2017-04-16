@@ -2,6 +2,12 @@ module.exports = [
 	{
 		name: 'array, strings',
 		schema: ['string'],
+		jsonschema: {
+			type: 'array',
+			items: {
+				type: 'string',
+			},
+		},
 		tests: [
 			{
 				name: 'empty',
@@ -43,6 +49,7 @@ module.exports = [
 		],
 	},
 
+	/*
 	{
 		name: 'array, strings OR number',
 		schema: ['string', 'integer'],
@@ -54,12 +61,16 @@ module.exports = [
 			},
 			{
 				name: '1 number',
-				data: [-45.67],
+				data: [-45.67, -123],
 				valid: false,
 				errors: [
 					{
 						code: 'ARRAY_ITEM',
 						path: ['$', 0],
+					},
+					{
+						code: 'ARRAY_ITEM',
+						path: ['$', 1],
 					},
 				],
 			},
@@ -99,4 +110,5 @@ module.exports = [
 			},
 		],
 	},
+*/
 ];

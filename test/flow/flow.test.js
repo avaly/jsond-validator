@@ -9,7 +9,7 @@ var assert = require('assert'),
 	SNAPSHOTS_PATH = path.resolve(__dirname, '_snapshots_');
 
 function prettyDiff(a, b) {
-	const diffs = diff.diffChars(a, b);
+	var diffs = diff.diffChars(a, b);
 	if (diffs.length > 1) {
 		console.log(
 			diffs.reduce(function(accumulator, part) {
@@ -25,9 +25,11 @@ function prettyDiff(a, b) {
 	assert.equal(diffs.length, 1, 'There are no diffs');
 }
 
+// TODO: FIX
+
 suite('flow check', function() {
 	test('flow ls', function() {
-		const output = execFileSync('../../node_modules/.bin/flow', ['ls'], {
+		var output = execFileSync('../../node_modules/.bin/flow', ['ls'], {
 			cwd: __dirname,
 		});
 		console.log(output.toString());

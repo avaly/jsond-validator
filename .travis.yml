@@ -12,7 +12,7 @@ script:
   - "if [[ $TRAVIS_JOB_NUMBER == *.1 ]]; then npm run test-client; fi"
   - "if [[ $TRAVIS_JOB_NUMBER == *.1 ]]; then npm run test-saucelabs; fi"
   - "if [[ $TRAVIS_JOB_NUMBER == *.1 ]]; then npm run coverage; fi"
-  - npm run benchmark
+  - "if [[ $TRAVIS_JOB_NUMBER == *.1 ]]; then npm run benchmark; fi"
 
 deploy:
   - provider: script

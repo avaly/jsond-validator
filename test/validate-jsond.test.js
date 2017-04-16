@@ -28,7 +28,7 @@ suite('validate-jsond', function() {
 				FIXTURES_PATH + '/example-1-schema.json',
 			]);
 		} catch (err) {
-			const stdout = err.stdout.toString();
+			var stdout = err.stdout.toString();
 			assert(
 				stdout.indexOf(
 					'The data is NOT valid according to the JSON definition!'

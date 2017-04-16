@@ -2,6 +2,10 @@ module.exports = [
 	{
 		name: 'object, empty',
 		schema: {},
+		jsonschema: {
+			type: 'object',
+			additionalProperties: false,
+		},
 		tests: [
 			{
 				name: 'valid',
@@ -21,12 +25,31 @@ module.exports = [
 					},
 				],
 			},
+			{
+				name: 'not an object',
+				data: 'Lorem',
+				valid: false,
+				errors: [
+					{
+						code: 'OBJECT_REQUIRED',
+						path: ['$'],
+					},
+				],
+			},
 		],
 	},
 	{
 		name: 'object, 1 property',
 		schema: {
 			name: 'string',
+		},
+		jsonschema: {
+			type: 'object',
+			required: ['name'],
+			properties: {
+				name: { type: 'string' },
+			},
+			additionalProperties: false,
 		},
 		tests: [
 			{
@@ -57,6 +80,16 @@ module.exports = [
 			name: 'a(b|c)',
 			age: '[20,99)',
 			manager: 'boolean',
+		},
+		jsonschema: {
+			type: 'object',
+			required: ['name', 'age', 'manager'],
+			properties: {
+				name: { type: 'string' },
+				age: { type: 'number', minimum: 20 },
+				manager: { type: 'boolean' },
+			},
+			additionalProperties: false,
 		},
 		tests: [
 			{
@@ -90,6 +123,15 @@ module.exports = [
 		schema: {
 			name: 'lorem',
 			'location?': 'number',
+		},
+		jsonschema: {
+			type: 'object',
+			required: ['name'],
+			properties: {
+				name: { type: 'string' },
+				location: { type: 'number' },
+			},
+			additionalProperties: false,
 		},
 		tests: [
 			{
@@ -130,6 +172,23 @@ module.exports = [
 				street: 'string',
 				number: 'integer',
 			},
+		},
+		jsonschema: {
+			type: 'object',
+			required: ['name', 'address'],
+			properties: {
+				name: { type: 'string' },
+				address: {
+					type: 'object',
+					required: ['street', 'number'],
+					properties: {
+						street: { type: 'string' },
+						number: { type: 'number' },
+					},
+					additionalProperties: false,
+				},
+			},
+			additionalProperties: false,
 		},
 		tests: [
 			{

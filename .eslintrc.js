@@ -13,6 +13,9 @@ module.exports = {
 		'prettier',
 		'prettier/flowtype',
 	],
+	globals: {
+		_DEBUG_: true,
+	},
 	plugins: ['flowtype'],
 	rules: {},
 };

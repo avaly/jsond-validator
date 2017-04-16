@@ -25,8 +25,13 @@ module.exports = function(grunt) {
 		// Client-side mocha tests
 		mocha: {
 			test: {
-				src: ['test/client/*.html'],
+				src: ['test/client/index.html'],
 				options: {
+					log: true,
+					logErrors: true,
+					mocha: {
+						ui: 'tdd',
+					},
 					reporter: 'List',
 					run: true,
 				},

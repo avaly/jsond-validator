@@ -1,3 +1,4 @@
 --reporter list
 --ui tdd
 --timeout 5s
+--require test/_setup_/globals.js

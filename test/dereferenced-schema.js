@@ -12,7 +12,7 @@ test('dereferenced-schema', function() {
 			},
 		},
 		'third.jsond': '^u[0-9]+$',
-		'fourth.jsond': '(10-99]',
+		'fourth.jsond': '(10,99]',
 	};
 	var validator = new Validator();
 
@@ -26,7 +26,7 @@ test('dereferenced-schema', function() {
 			id: '^u[0-9]+$',
 			list: ['^u[0-9]+$'],
 			object: {
-				deep: '(10-99]',
+				deep: '(10,99]',
 			},
 		}
 	);

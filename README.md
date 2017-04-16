@@ -1,5 +1,7 @@
 # [JSOND](http://www.jsond.org/) Validator
 
+**node.js and browser module for validating JSON definitions**
+
 [![Travis CI](https://img.shields.io/travis/avaly/jsond-validator/master.svg)](https://travis-ci.org/avaly/jsond-validator)
 [![Sauce Test Status](https://saucelabs.com/buildstatus/avaly-jsond-v)](https://saucelabs.com/u/avaly-jsond-v)
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/avaly-jsond-v.svg)](https://saucelabs.com/u/avaly-jsond-v)
@@ -7,9 +9,9 @@
 [![Dependencies](https://img.shields.io/david/dev/avaly/jsond-validator.svg)](https://david-dm.org/avaly/jsond-validator)
 
 
-> node.js module for validating JSON definitions
+A validator for JSON definitions according to the [JSOND specification](http://tools.ietf.org/html/draft-oskarsson-jsond-00) with the following exceptions:
 
-A validator for JSON definitions according to the [JSOND specification](http://tools.ietf.org/html/draft-oskarsson-jsond-00).
+* Array items are matched only agains the first array definition in the schema (see `test/data/array.js` for missing test cases)
 
 ## Documentation
 
@@ -56,7 +58,7 @@ npm run test-client
 
 ## License
 
-Copyright (c) 2015-2017, Valentin Agachi (http://agachi.name)
+Copyright (c) 2015-2017, Valentin Agachi ([http://agachi.name](http://agachi.name))
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 

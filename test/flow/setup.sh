@@ -4,11 +4,15 @@ set -xeuo pipefail
 
 THIS_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 ROOT_DIR=$(cd $THIS_DIR/../.. && pwd)
-MODULE_DIR="${THIS_DIR}/node_modules/jsond-validator"
+NODE_MODULES_DIR="${THIS_DIR}/node_modules"
+MODULE_DIR="${NODE_MODULES_DIR}/jsond-validator"
+
+rm -rf $NODE_MODULES_DIR
+mkdir -p $NODE_MODULES_DIR
+
+cp -fR $ROOT_DIR/node_modules/debug $NODE_MODULES_DIR/debug
 
 mkdir -p $MODULE_DIR
-ln -f -s $ROOT_DIR/node_modules/debug $THIS_DIR/node_modules/debug
-ln -f -s $ROOT_DIR/package.json $MODULE_DIR/package.json
 mkdir -p $MODULE_DIR/lib
-ln -f -s $ROOT_DIR/lib/index.js $MODULE_DIR/lib/index.js
-ln -f -s $ROOT_DIR/lib/index.js.flow $MODULE_DIR/lib/index.js.flow
+cp -f $ROOT_DIR/package.json $MODULE_DIR/package.json
+cp -fR $ROOT_DIR/lib/* $MODULE_DIR/lib/
