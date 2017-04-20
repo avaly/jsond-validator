@@ -15,6 +15,29 @@ A validator for JSON definitions according to the [JSOND specification](http://t
 
 [http://avaly.github.io/jsond-validator](http://avaly.github.io/jsond-validator)
 
+## Usage
+
+```cli
+yarn add jsond-validator
+```
+
+OR
+
+```cli
+npm install jsond-validator
+```
+
+Then:
+
+```
+const validator = require('jsond-validator');
+```
+
+The package also ships with two UMD bundles:
+
+- `dist/jsond-validator.js`
+- `dist/jsond-validator.min.js`
+
 ## Tools
 
 A simple script is shipped with this module to verify a JSON file against a

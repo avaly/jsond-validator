@@ -2,23 +2,24 @@
 
 var assert = require('assert');
 var Validator = require('../');
-var tests = [
-	'boolean',
-	'integer',
-	'number',
-	'interval',
-	'set',
-	'string',
-	'string-regular-expression',
-	'array',
-	'object',
-	'constant',
-	'reference',
-	'example-1',
-];
 
-tests.forEach(function(testCaseFile) {
-	var testCases = require('./data/' + testCaseFile);
+var testCasesAll = {
+	boolean: require('./data/boolean'),
+	integer: require('./data/integer'),
+	number: require('./data/number'),
+	interval: require('./data/interval'),
+	set: require('./data/set'),
+	string: require('./data/string'),
+	'string-regular-expression': require('./data/boolean'),
+	array: require('./data/array'),
+	object: require('./data/object'),
+	constant: require('./data/constant'),
+	reference: require('./data/reference'),
+	'example-1': require('./data/example-1'),
+};
+
+Object.keys(testCasesAll).forEach(function(testCaseFile) {
+	var testCases = testCasesAll[testCaseFile];
 
 	testCases.forEach(function(testCase) {
 		if (!testCase.tests) {

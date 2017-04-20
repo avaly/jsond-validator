@@ -24,16 +24,19 @@
   "license": "ISC",
   "main": "lib/index.js",
   "files": [
+    "bin/validate-jsond",
+    "dist/jsond-validator.js",
+    "dist/jsond-validator.min.js",
     "lib/index.js",
-    "lib/index.js.flow",
-    "bin/validate-jsond"
+    "lib/index.js.flow"
   ],
   "bin": {
     "validate-jsond": "./bin/validate-jsond"
   },
   "scripts": {
     "benchmark": "node benchmark/run.js",
-    "build": "grunt webpack",
+    "build:dist": "rollup -c rollup.config.js && rollup -c rollup.config.min.js",
+    "build:test": "rollup -c test/client/rollup.config.js",
     "commitmsg": "validate-commit-msg",
     "coverage": "npm run test-coverage && codecov",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
@@ -45,11 +48,11 @@
     "pretty:lib": "prettier --use-tabs --single-quote --trailing-comma es5 --write \"lib/*.js*\"",
     "pretty:test": "prettier --use-tabs --single-quote --trailing-comma es5 --write \"test/*/*.js\"",
     "test": "mocha test/*.js && npm run test-flow",
-    "test-client": "npm run build && grunt mocha",
+    "test-client": "npm run build:test && grunt mocha",
     "test-coverage": "istanbul cover node_modules/mocha/bin/_mocha",
     "test-flow": "./test/flow/setup.sh && mocha test/flow/*.test.js",
-    "test-saucelabs": "npm run build && grunt saucelabs",
-    "version": "standard-version"
+    "test-saucelabs": "npm run build:test && grunt saucelabs",
+    "version": "npm run build:dist && git add dist && standard-version"
   },
   "dependencies": {},
   "devDependencies": {
@@ -73,7 +76,6 @@
     "grunt-jsonlint": "^1.1.0",
     "grunt-mocha": "^1.0.4",
     "grunt-saucelabs": "^9.0.0",
-    "grunt-webpack": "^2.0.1",
     "husky": "^0.13.3",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.3",
@@ -81,12 +83,18 @@
     "minami": "^1.1.1",
     "mocha": "^3.2.0",
     "prettier": "^1.1.0",
+    "rollup": "^0.41.6",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-filesize": "^1.2.1",
+    "rollup-plugin-node-builtins": "^2.1.0",
+    "rollup-plugin-node-globals": "^1.1.0",
+    "rollup-plugin-re": "^1.0.2",
+    "rollup-plugin-uglify": "^1.0.2",
     "strip-loader": "^0.1.2",
-    "validate-commit-msg": "^2.12.1",
-    "webpack": "^2.3.3"
+    "validate-commit-msg": "^2.12.1"
   },
   "lint-staged": {
-    "*.js": [
+    "{benchmark,lib,test}/**/*.js": [
       "prettier --use-tabs --single-quote --trailing-comma es5 --write",
       "git add"
     ]

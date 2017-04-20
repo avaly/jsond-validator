@@ -1,25 +1,25 @@
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global['jsond-validator'] = factory());
+}(this, (function () { 'use strict';
+
 /**
  * @flow
  */
 
-var JSOND_BOOLEAN = 'boolean',
-	JSOND_STRING = 'string',
-	JSOND_NUMBER = 'number',
-	JSOND_INTEGER = 'integer',
-	JSON_NUMBER = '\\-?(?:0|[1-9]\\d*)(?:\\.\\d+)?',
-	JSOND_SET_PATTERN = new RegExp(
+var JSOND_BOOLEAN = 'boolean';
+var JSOND_STRING = 'string';
+var JSOND_NUMBER = 'number';
+var JSOND_INTEGER = 'integer';
+var JSON_NUMBER = '\\-?(?:0|[1-9]\\d*)(?:\\.\\d+)?';
+var JSOND_SET_PATTERN = new RegExp(
 		'^\{(' + JSON_NUMBER + '(,' + JSON_NUMBER + ')*)\}$'
-	),
-	JSOND_INTERVAL_PATTERN = new RegExp(
+	);
+var JSOND_INTERVAL_PATTERN = new RegExp(
 		'^(\\[|\\()(' + JSON_NUMBER + ')?,(' + JSON_NUMBER + ')?(\\]|\\))$'
-	),
-	JSOND_OPTIONAL_PATTERN = /\?$/,
-	debug = function() {};
-
-/* istanbul ignore if */
-if (process.env.DEBUG) {
-	debug = require('debug')('jsond-validator');
-}
+	);
+var JSOND_OPTIONAL_PATTERN = /\?$/;
 
 /**
  * Validates whether a given data object is a valid boolean value
@@ -32,7 +32,7 @@ if (process.env.DEBUG) {
  * @return {Object}       An errors list
  */
 function validateBoolean(data, path) {
-	debug('validateBoolean', data, path);
+	
 
 	if (typeof data !== 'boolean') {
 		return [
@@ -57,7 +57,7 @@ function validateBoolean(data, path) {
  * @return {Object}       An errors list
  */
 function validateString(data, path) {
-	debug('validateString', data, path);
+	
 
 	if (typeof data !== 'string') {
 		return [
@@ -82,7 +82,7 @@ function validateString(data, path) {
  * @return {Object}       An errors list
  */
 function validateNumber(data, path) {
-	debug('validateNumber', data, typeof data, path);
+	
 
 	if (typeof data !== 'number') {
 		return [
@@ -107,7 +107,7 @@ function validateNumber(data, path) {
  * @return {Object}       An errors list
  */
 function validateInteger(data, path) {
-	debug('validateInteger', data, typeof data, path);
+	
 
 	if (typeof data !== 'number' || data < 0 || data % 1 !== 0) {
 		return [
@@ -136,7 +136,7 @@ function validateInteger(data, path) {
 function validateSpecial(data, schema, path) {
 	var parsed;
 
-	debug('validateSpecial', data, schema, typeof schema, path);
+	
 
 	parsed = schema.match(JSOND_SET_PATTERN);
 	if (parsed) {
@@ -168,7 +168,7 @@ function validateSet(data, schema, parsed, path) {
 
 	errors = validateNumber(data);
 
-	debug('validateSet', dataStringified, schema, values, path);
+	
 
 	if (!errors.length && values.indexOf(dataStringified) === -1) {
 		errors = [
@@ -202,7 +202,7 @@ function validateInterval(data, schema, parsed, path) {
 		valid,
 		errors;
 
-	debug('validateInterval', data, schema, parsed);
+	
 
 	errors = validateNumber(data);
 
@@ -273,7 +273,7 @@ function validateRegularExpression(data, schema, path) {
 	}
 	pattern = new RegExp(schema);
 
-	debug('validateRegularExpression', data, pattern, path);
+	
 
 	if (!pattern.test(data)) {
 		return [
@@ -299,7 +299,7 @@ function validateRegularExpression(data, schema, path) {
  * @return {Object}       An errors list
  */
 function validateConstant(data, schema, path) {
-	debug('validateConstant', data, schema, path);
+	
 
 	if (data !== schema) {
 		return [
@@ -469,7 +469,7 @@ JSONDValidator.prototype = {
 			schemaData = getSchemaByRef(schema, self.schemas),
 			errors;
 
-		debug('validateRoot', data, schema, schemaData, self.path);
+		
 
 		if (Array.isArray(schemaData)) {
 			errors = self.validateArray(data, schemaData);
@@ -492,7 +492,7 @@ JSONDValidator.prototype = {
 		}
 
 		if (errors.length) {
-			debug('validateRoot errors', errors);
+			
 		}
 
 		return errors;
@@ -511,7 +511,7 @@ JSONDValidator.prototype = {
 	validateArray: function(data, schema) {
 		var self = this, errors = [], di, dl, si, sl, valid, errs;
 
-		debug('validateArray', data, schema);
+		
 
 		if (!Array.isArray(data)) {
 			return [
@@ -582,7 +582,7 @@ JSONDValidator.prototype = {
 			errs,
 			i;
 
-		debug('validateObject', data, schema);
+		
 
 		for (i = 0; i < l; i++) {
 			keyData = keySchema = keysSchema[i];
@@ -622,4 +622,10 @@ JSONDValidator.prototype = {
 	},
 };
 
-module.exports = JSONDValidator;
+var index$2 = JSONDValidator;
+
+var index = index$2;
+
+return index;
+
+})));

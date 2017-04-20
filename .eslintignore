@@ -1,4 +1,6 @@
+dist/
 docs/
-test/client/cases.js
+test/client/tests.js
 test/client/mocha.js
+test/flow/
 tmp/

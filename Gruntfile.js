@@ -1,13 +1,9 @@
-const path = require('path');
-const webpack = require('webpack');
-
 module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-mocha');
 	grunt.loadNpmTasks('grunt-saucelabs');
-	grunt.loadNpmTasks('grunt-webpack');
 
 	grunt.initConfig({
 		connect: {
@@ -73,11 +69,6 @@ module.exports = function(grunt) {
 							version: '10.0',
 						},
 						{
-							browserName: 'internet explorer',
-							platform: 'Windows 7',
-							version: '9.0',
-						},
-						{
 							browserName: 'chrome',
 							platform: 'Linux',
 						},
@@ -91,34 +82,6 @@ module.exports = function(grunt) {
 							version: '8.0',
 						},
 					],
-				},
-			},
-		},
-		webpack: {
-			tests: {
-				entry: {
-					cases: ['./test/cases.js', './test/dereferenced-schema.js'],
-				},
-				output: {
-					path: path.resolve('./test/client/'),
-					filename: '[name].js',
-				},
-				module: {
-					loaders: [
-						{
-							test: /\.js$/,
-							loader: 'strip-loader?strip[]=debug',
-						},
-					],
-				},
-				plugins: [
-					new webpack.NormalModuleReplacementPlugin(
-						/debug/,
-						process.cwd() + '/lib/debug-fake.js'
-					),
-				],
-				stats: {
-					modules: true,
 				},
 			},
 		},
