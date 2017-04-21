@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 				options: {
 					urls: ['http://localhost:9999/test/client/index.html'],
 					tunnelTimeout: 5,
-					build: process.env.CIRCLE_BUILD_NUM || 'dev',
+					build: process.env.TRAVIS_BUILD_NUMBER || 'dev',
 					concurrency: 3,
 					testname: 'jsond-validator',
 					public: 'public',
