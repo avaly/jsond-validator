@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="JSONDValidator.html">JSONDValidator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#addSchema">addSchema</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#getDereferencedSchema">getDereferencedSchema</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#validate">validate</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#JSOND_BOOLEAN">JSOND_BOOLEAN</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="JSONDValidator.html">JSONDValidator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#addSchema">addSchema</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#getDereferencedSchema">getDereferencedSchema</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#validate">validate</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#Compiler">Compiler</a></span></li>
 </nav>
 
 <div id="main">
@@ -99,7 +99,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line388">line 388</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line79">line 79</a>
     </li></ul></dd>
     
 
@@ -157,7 +157,7 @@
 
     
 
-    <h4 class="name" id="addSchema"><span class="type-signature"></span>addSchema<span class="signature">(id, schema)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addSchema"><span class="type-signature"></span>addSchema<span class="signature">(schemaID, schema)</span><span class="type-signature"></span></h4>
 
     
 
@@ -200,7 +200,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line403">line 403</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line95">line 95</a>
     </li></ul></dd>
     
 
@@ -244,7 +244,7 @@
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>schemaID</code></td>
             
 
             <td class="type">
@@ -326,7 +326,7 @@ validator.addSchema('http://foo.com/id.json', 'integer')</code></pre>
 
     
 
-    <h4 class="name" id="getDereferencedSchema"><span class="type-signature"></span>getDereferencedSchema<span class="signature">(id)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="getDereferencedSchema"><span class="type-signature"></span>getDereferencedSchema<span class="signature">(schemaID)</span><span class="type-signature"> &rarr; {Object}</span></h4>
 
     
 
@@ -371,7 +371,7 @@ the interal schema map.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line416">line 416</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line112">line 112</a>
     </li></ul></dd>
     
 
@@ -415,7 +415,7 @@ the interal schema map.</p>
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>schemaID</code></td>
             
 
             <td class="type">
@@ -484,7 +484,7 @@ the interal schema map.</p>
 
     
 
-    <h4 class="name" id="validate"><span class="type-signature"></span>validate<span class="signature">(data, schema)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="validate"><span class="type-signature"></span>validate<span class="signature">(data, schemaID)</span><span class="type-signature"> &rarr; {Object}</span></h4>
 
     
 
@@ -532,7 +532,7 @@ Returns an object with the following properties:</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line437">line 437</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line133">line 133</a>
     </li></ul></dd>
     
 
@@ -602,7 +602,7 @@ Returns an object with the following properties:</p>
 
         <tr>
             
-                <td class="name"><code>schema</code></td>
+                <td class="name"><code>schemaID</code></td>
             
 
             <td class="type">
@@ -619,7 +619,7 @@ Returns an object with the following properties:</p>
             
 
             <td class="description last">
-                <p>An arbitrary JSOND text or reference</p>
+                <p>A JSOND schema identifier</p>
                 
             </td>
         </tr>
@@ -692,7 +692,7 @@ var result = validator.validate(id, 'http://foo.com/id.json');</code></pre>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Apr 21 2017 10:56:43 GMT+0000 (UTC) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Apr 21 2017 11:47:38 GMT+0000 (UTC) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

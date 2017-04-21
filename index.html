@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="JSONDValidator.html">JSONDValidator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#addSchema">addSchema</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#getDereferencedSchema">getDereferencedSchema</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#validate">validate</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#JSOND_BOOLEAN">JSOND_BOOLEAN</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="JSONDValidator.html">JSONDValidator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#addSchema">addSchema</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#getDereferencedSchema">getDereferencedSchema</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#validate">validate</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#Compiler">Compiler</a></span></li>
 </nav>
 
 <div id="main">
@@ -48,15 +48,16 @@
 
 
     <section class="readme">
-        <article><h1><a href="http://www.jsond.org/">JSOND</a> Validator</h1><p><a href="https://travis-ci.org/avaly/jsond-validator"><img src="https://img.shields.io/travis/avaly/jsond-validator/master.svg" alt="Travis CI"></a>
+        <article><h1><a href="http://www.jsond.org/">JSOND</a> Validator</h1><p><strong>node.js and browser module for validating JSON definitions</strong></p>
+<p><a href="https://travis-ci.org/avaly/jsond-validator"><img src="https://img.shields.io/travis/avaly/jsond-validator/master.svg" alt="Travis CI"></a>
 <a href="https://saucelabs.com/u/avaly-jsond-v"><img src="https://saucelabs.com/buildstatus/avaly-jsond-v" alt="Sauce Test Status"></a>
 <a href="https://saucelabs.com/u/avaly-jsond-v"><img src="https://saucelabs.com/browser-matrix/avaly-jsond-v.svg" alt="Sauce Test Status"></a>
 <a href="https://codecov.io/gh/avaly/jsond-validator"><img src="https://img.shields.io/codecov/c/github/avaly/jsond-validator.svg" alt="Code Coverage"></a>
 <a href="https://david-dm.org/avaly/jsond-validator"><img src="https://img.shields.io/david/dev/avaly/jsond-validator.svg" alt="Dependencies"></a></p>
-<blockquote>
-<p>node.js module for validating JSON definitions</p>
-</blockquote>
-<p>A validator for JSON definitions according to the <a href="http://tools.ietf.org/html/draft-oskarsson-jsond-00">JSOND specification</a>.</p>
+<p>A validator for JSON definitions according to the <a href="http://tools.ietf.org/html/draft-oskarsson-jsond-00">JSOND specification</a> with the following exceptions:</p>
+<ul>
+<li>Array items are matched only agains the first array definition in the schema (see <code>test/data/array.js</code> for missing test cases)</li>
+</ul>
 <h2>Documentation</h2><p><a href="http://avaly.github.io/jsond-validator">http://avaly.github.io/jsond-validator</a></p>
 <h2>Usage</h2><pre class="prettyprint source lang-cli"><code>yarn add jsond-validator</code></pre><p>OR</p>
 <pre class="prettyprint source lang-cli"><code>npm install jsond-validator</code></pre><p>Then:</p>
@@ -68,7 +69,7 @@
 <h2>Tools</h2><p>A simple script is shipped with this module to verify a JSON file against a
 JSON schema:</p>
 <pre class="prettyprint source"><code>validate-jsond INPUT_FILE SCHEMA_FILE</code></pre><h2>Development</h2><pre class="prettyprint source"><code>npm run test
-npm run test-client</code></pre><h2>License</h2><p>Copyright (c) 2015-2017, Valentin Agachi (http://agachi.name)</p>
+npm run test-client</code></pre><h2>License</h2><p>Copyright (c) 2015-2017, Valentin Agachi (<a href="http://agachi.name">http://agachi.name</a>)</p>
 <p>Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.</p>
 <p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</p></article>
     </section>
@@ -83,7 +84,7 @@ npm run test-client</code></pre><h2>License</h2><p>Copyright (c) 2015-2017, Vale
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Apr 21 2017 10:56:43 GMT+0000 (UTC) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Apr 21 2017 11:47:38 GMT+0000 (UTC) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
