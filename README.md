@@ -11,7 +11,7 @@
 
 A validator for JSON definitions according to the [JSOND specification](http://tools.ietf.org/html/draft-oskarsson-jsond-00) with the following exceptions:
 
-* Array items are matched only agains the first array definition in the schema (see `test/data/array.js` for missing test cases)
+* Array items are matched only against the first array definition in the schema (see `test/data/array.js` for missing test cases)
 
 ## Documentation
 
