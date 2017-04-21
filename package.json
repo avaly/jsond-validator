@@ -1,6 +1,6 @@
 {
   "name": "jsond-validator",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "JSOND Validator",
   "author": {
     "name": "Valentin Agachi",
@@ -90,6 +90,7 @@
     "rollup-plugin-node-globals": "^1.1.0",
     "rollup-plugin-re": "^1.0.2",
     "rollup-plugin-uglify": "^1.0.2",
+    "standard-version": "^4.0.0",
     "strip-loader": "^0.1.2",
     "validate-commit-msg": "^2.12.1"
   },
