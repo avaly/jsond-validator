@@ -12,6 +12,8 @@ export type JSONDValidatorError = {
 	path: Array<string>,
 };
 
+export type JSONDValidatorCompiled = (data: any) => Array<JSONDValidatorError>;
+
 export type JSONDValidatorResult = {
 	errors: Array<JSONDValidatorError>,
 	valid: boolean,
@@ -21,7 +23,12 @@ export type JSONDValidatorResult = {
 declare class JSONDValidator {
 	constructor(): void,
 	schemas: { [key: string]: JSONDValidatorSchema },
-	addSchema(schemaID: string, schema: JSONDValidatorSchema): this,
+	compiled: { [key: string]: JSONDValidatorCompiled },
+	addSchema(
+		schemaID: string,
+		schema: JSONDValidatorSchema,
+		lazy?: boolean
+	): this,
 	getDereferencedSchema(schemaID: string): JSONDValidatorSchema,
 	validate(data: any, schemaID: string): JSONDValidatorResult,
 }

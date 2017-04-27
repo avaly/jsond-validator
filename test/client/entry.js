@@ -3,3 +3,4 @@
  */
 require('../cases');
 require('../dereferenced-schema');
+require('../lazy-mode.test');

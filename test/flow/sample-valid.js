@@ -8,6 +8,7 @@ var JSONDValidator = require('jsond-validator');
 var validator = new JSONDValidator();
 
 validator.addSchema('foo', 'number');
+validator.addSchema('lazy', 'number', true);
 validator.addSchema('bar', ['string']);
 validator.addSchema('ham', {
 	id: 'string',
