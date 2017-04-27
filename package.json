@@ -68,7 +68,7 @@
     "eslint": "^3.19.0",
     "eslint-config-prettier": "^1.6.0",
     "eslint-plugin-flowtype": "^2.30.4",
-    "flow-bin": "^0.44.0",
+    "flow-bin": "^0.45.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-connect": "^1.0.2",
