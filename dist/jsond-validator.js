@@ -482,6 +482,9 @@ var Compiler_1 = Compiler;
  * @flow
  */
 
+/**
+ * @private
+ */
 
 
 
@@ -568,16 +571,22 @@ JSONDValidator.prototype = {
 	 * @example
 	 * var validator = new JSONDValidator();
 	 * validator.addSchema('http://foo.com/id.json', 'integer')
+	 * // With lazy mode, schema compilation is done on the first use
+	 * validator.addSchema('http://foo.com/id.json', 'integer', true)
 	 *
-	 * @param {String} schemaID	A JSOND schema identifier
+	 * @param {String} schemaID	Schema identifier
 	 * @param {Mixed}  schema		An arbitrary JSOND text
+	 * @param {Boolean} [lazy=false] Compiles schema into validator function on first use
 	 */
-	addSchema: function(schemaID, schema) {
+	addSchema: function(schemaID, schema, lazy) {
 		var dereferencedSchema = dereferenceSchema(schema, this.schemas);
 		
 		this.schemas[schemaID] = dereferencedSchema;
-		// TODO: lazy compile schema
-		this.compiled[schemaID] = Compiler_1.compile(dereferencedSchema);
+		if (!lazy) {
+			this.compiled[schemaID] = Compiler_1.compile(dereferencedSchema);
+		}
+
+		return this;
 	},
 
 	/**
@@ -606,12 +615,16 @@ JSONDValidator.prototype = {
 	 * var result = validator.validate(id, 'http://foo.com/id.json');
 	 *
 	 * @param  {Mixed} data     An arbitrary data object
-	 * @param  {Mixed} schemaID A JSOND schema identifier
+	 * @param  {String} schemaID Schema identifier
 	 *
-	 * @return {Object}
+	 * @return {Object} { valid: Boolean, errors: Array<Object> }
 	 */
 	validate: function(data, schemaID) {
 		
+		// Lazy mode: compile on first use
+		if (!this.compiled[schemaID] && this.schemas[schemaID]) {
+			this.compiled[schemaID] = Compiler_1.compile(this.schemas[schemaID]);
+		}
 		var compiled = this.compiled[schemaID];
 		var errors = compiled(data);
 		return {

@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/avaly/jsond-validator/compare/v2.0.0...v2.1.0) (2017-04-27)
+
+
+### Features
+
+* Support lazy schema compilation :alien: ([c28255f](https://github.com/avaly/jsond-validator/commit/c28255f))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/avaly/jsond-validator/compare/v1.3.0...v2.0.0) (2017-04-21)
 
