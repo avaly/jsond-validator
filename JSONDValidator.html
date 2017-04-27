@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="JSONDValidator.html">JSONDValidator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#addSchema">addSchema</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#getDereferencedSchema">getDereferencedSchema</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#validate">validate</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#Compiler">Compiler</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="JSONDValidator.html">JSONDValidator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#addSchema">addSchema</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#getDereferencedSchema">getDereferencedSchema</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="JSONDValidator.html#validate">validate</a></span></li>
 </nav>
 
 <div id="main">
@@ -99,7 +99,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line79">line 79</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line82">line 82</a>
     </li></ul></dd>
     
 
@@ -157,7 +157,7 @@
 
     
 
-    <h4 class="name" id="addSchema"><span class="type-signature"></span>addSchema<span class="signature">(schemaID, schema)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addSchema"><span class="type-signature"></span>addSchema<span class="signature">(schemaID, schema, lazy<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -200,7 +200,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line95">line 95</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line101">line 101</a>
     </li></ul></dd>
     
 
@@ -232,7 +232,11 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -257,11 +261,23 @@
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last">
-                <p>A JSOND schema identifier</p>
+                <p>Schema identifier</p>
                 
             </td>
         </tr>
@@ -283,11 +299,65 @@
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last">
                 <p>An arbitrary JSOND text</p>
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lazy</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Boolean</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Compiles schema into validator function on first use</p>
                 
             </td>
         </tr>
@@ -315,7 +385,9 @@
 <h5>Example</h5>
 
     <pre class="prettyprint"><code>var validator = new JSONDValidator();
-validator.addSchema('http://foo.com/id.json', 'integer')</code></pre>
+validator.addSchema('http://foo.com/id.json', 'integer')
+// With lazy mode, schema compilation is done on the first use
+validator.addSchema('http://foo.com/id.json', 'integer', true)</code></pre>
 
 </div>
 
@@ -371,7 +443,7 @@ the interal schema map.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line112">line 112</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line121">line 121</a>
     </li></ul></dd>
     
 
@@ -532,7 +604,7 @@ Returns an object with the following properties:</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line133">line 133</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line142">line 142</a>
     </li></ul></dd>
     
 
@@ -608,7 +680,7 @@ Returns an object with the following properties:</p>
             <td class="type">
             
                 
-<span class="param-type"><code>Mixed</code></span>
+<span class="param-type"><code>String</code></span>
 
 
             
@@ -619,7 +691,7 @@ Returns an object with the following properties:</p>
             
 
             <td class="description last">
-                <p>A JSOND schema identifier</p>
+                <p>Schema identifier</p>
                 
             </td>
         </tr>
@@ -659,6 +731,10 @@ Returns an object with the following properties:</p>
 </dl>
 
 
+<div class="param-desc">
+    <p>{ valid: Boolean, errors: Array<Object> }</p>
+</div>
+
     
 </div>
 
@@ -692,7 +768,7 @@ var result = validator.validate(id, 'http://foo.com/id.json');</code></pre>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Apr 21 2017 11:47:38 GMT+0000 (UTC) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Thu Apr 27 2017 21:12:27 GMT+0000 (UTC) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
