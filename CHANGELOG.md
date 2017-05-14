@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/avaly/jsond-validator/compare/v2.1.0...v2.1.1) (2017-05-14)
+
+
+### Bug Fixes
+
+* Fix errors thrown by Flow 0.46.0 :ambulance: ([424e1fb](https://github.com/avaly/jsond-validator/commit/424e1fb))
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/avaly/jsond-validator/compare/v2.0.0...v2.1.0) (2017-04-27)
 

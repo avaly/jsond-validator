@@ -19,15 +19,15 @@ jobs:
       script: npm run coverage
     - stage: quality
       script: npm run benchmark
-
-deploy:
-  - provider: script
-    skip_cleanup: true
-    script: tools/docs
-    on:
-      tags: true
-  - provider: script
-    skip_cleanup: true
-    script: tools/publish
-    on:
-      tags: true
+    - stage: deploy
+      deploy:
+        - provider: script
+          skip_cleanup: true
+          script: tools/docs
+          on:
+            tags: true
+        - provider: script
+          skip_cleanup: true
+          script: tools/publish
+          on:
+            tags: true
