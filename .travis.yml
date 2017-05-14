@@ -1,18 +1,24 @@
 language: node_js
 node_js:
   - '6'
-  - '4'
 
 cache:
   yarn: true
 
-script:
-  - npm run lint
-  - npm test
-  - "if [[ $TRAVIS_JOB_NUMBER == *.1 ]]; then npm run test-client; fi"
-  - "if [[ $TRAVIS_JOB_NUMBER == *.1 ]]; then npm run test-saucelabs; fi"
-  - "if [[ $TRAVIS_JOB_NUMBER == *.1 ]]; then npm run coverage; fi"
-  - "if [[ $TRAVIS_JOB_NUMBER == *.1 ]]; then npm run benchmark; fi"
+jobs:
+  include:
+    - stage: test
+      script: npm run lint
+    - stage: test
+      script: npm run test-flow
+    - stage: test
+      script: npm run test-client
+    - stage: test-saucelabs
+      script: npm run test-saucelabs
+    - stage: quality
+      script: npm run coverage
+    - stage: quality
+      script: npm run benchmark
 
 deploy:
   - provider: script
