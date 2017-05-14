@@ -229,7 +229,7 @@ function set(compiler, schema, parsed) {
 	number_1(compiler, patterns.number);
 
 	var values = parsed[1].split(',').map(function(n) {
-		return parseFloat(n, 10);
+		return parseFloat(n);
 	});
 
 	compiler.add('if(%p.indexOf(%s)===-1)', JSON.stringify(values));
