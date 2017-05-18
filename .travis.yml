@@ -12,13 +12,9 @@ jobs:
     - stage: test
       script: npm run test-flow
     - stage: test
-      script: npm run test-client
-    - stage: test-saucelabs
-      script: npm run test-saucelabs
-    - stage: quality
-      script: npm run coverage
-    - stage: quality
-      script: npm run benchmark
+      script: npm run test-client && npm run test-saucelabs
+    - stage: test
+      script: npm run coverage && npm run benchmark
     - stage: deploy
       deploy:
         - provider: script
