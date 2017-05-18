@@ -488,6 +488,7 @@ var Compiler_1 = Compiler;
 
 
 
+
 /**
  * Get a schema definition based on a possible reference
  *
@@ -576,15 +577,20 @@ JSONDValidator.prototype = {
 	 *
 	 * @param {String} schemaID	Schema identifier
 	 * @param {Mixed}  schema		An arbitrary JSOND text
-	 * @param {Boolean} [lazy=false] Compiles schema into validator function on first use
 	 */
-	addSchema: function(schemaID, schema, lazy) {
-		var dereferencedSchema = dereferenceSchema(schema, this.schemas);
+	addSchema: function(schemaID, schema) {
 		
-		this.schemas[schemaID] = dereferencedSchema;
-		if (!lazy) {
-			this.compiled[schemaID] = Compiler_1.compile(dereferencedSchema);
+
+		if (
+			schemaID === patterns.boolean ||
+			schemaID === patterns.integer ||
+			schemaID === patterns.number ||
+			schemaID === patterns.string
+		) {
+			throw new Error('Schema IDs should not match any JSOND types');
 		}
+
+		this.schemas[schemaID] = schema;
 
 		return this;
 	},
@@ -621,10 +627,28 @@ JSONDValidator.prototype = {
 	 */
 	validate: function(data, schemaID) {
 		
-		// Lazy mode: compile on first use
-		if (!this.compiled[schemaID] && this.schemas[schemaID]) {
-			this.compiled[schemaID] = Compiler_1.compile(this.schemas[schemaID]);
+
+		if (!this.schemas[schemaID]) {
+			return {
+				valid: false,
+				errors: [
+					{
+						code: 'NO_SCHEMA',
+						path: ['$'],
+					},
+				],
+			};
 		}
+
+		if (!this.compiled[schemaID]) {
+			var dereferencedSchema = dereferenceSchema(
+				this.schemas[schemaID],
+				this.schemas
+			);
+			
+			this.compiled[schemaID] = Compiler_1.compile(dereferencedSchema);
+		}
+
 		var compiled = this.compiled[schemaID];
 		var errors = compiled(data);
 		return {

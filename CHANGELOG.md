@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/avaly/jsond-validator/compare/v2.1.1...v2.1.2) (2017-05-18)
+
+
+### Bug Fixes
+
+* Schema adding order does not affect result :bug: ([f67059a](https://github.com/avaly/jsond-validator/commit/f67059a)), closes [#28](https://github.com/avaly/jsond-validator/issues/28)
+
+
+
 <a name="2.1.1"></a>
 ## [2.1.1](https://github.com/avaly/jsond-validator/compare/v2.1.0...v2.1.1) (2017-05-14)
 
