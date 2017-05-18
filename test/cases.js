@@ -52,13 +52,13 @@ Object.keys(testCasesAll).forEach(function(testCaseFile) {
 			test(testName, function() {
 				var validator = new Validator();
 
+				if (testCase.schema) {
+					validator.addSchema(testCase.name, testCase.schema);
+				}
 				if (testCase.schemas) {
 					Object.keys(testCase.schemas).forEach(function(key) {
 						validator.addSchema(key, testCase.schemas[key]);
 					});
-				}
-				if (testCase.schema) {
-					validator.addSchema(testCase.name, testCase.schema);
 				}
 
 				if (testJSONSchema) {

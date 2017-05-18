@@ -1,6 +1,6 @@
 module.exports = [
 	{
-		name: 'integer',
+		name: 'integer schema',
 		schema: 'integer',
 		tests: [
 			// valid
