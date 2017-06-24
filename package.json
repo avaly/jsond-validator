@@ -74,7 +74,7 @@
     "grunt-jsonlint": "^1.1.0",
     "grunt-mocha": "^1.0.4",
     "grunt-saucelabs": "^9.0.0",
-    "husky": "^0.13.3",
+    "husky": "^0.14.1",
     "is-my-json-valid": "^2.16.0",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.3",
