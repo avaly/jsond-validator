@@ -5,5 +5,3 @@
 [libs]
 
 [options]
-# v0.46.0 only - remove after upgrade
-experimental.strict_call_arity=true

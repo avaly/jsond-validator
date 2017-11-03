@@ -25,8 +25,6 @@ function prettyDiff(a, b) {
 	assert.equal(diffs.length, 1, 'There are no diffs');
 }
 
-// TODO: FIX
-
 suite('flow check', function() {
 	test('flow ls', function() {
 		var output = execFileSync('../../node_modules/.bin/flow', ['ls'], {
