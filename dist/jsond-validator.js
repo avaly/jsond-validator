@@ -54,7 +54,7 @@ var patterns = {
 	),
 	number: 'number',
 	optional: /\?$/,
-	set: new RegExp('^\{(' + NUMBER + '(,' + NUMBER + ')*)\}$'),
+	set: new RegExp('^{(' + NUMBER + '(,' + NUMBER + ')*)}$'),
 	string: 'string',
 };
 
@@ -256,7 +256,9 @@ function set$1(compiler, schema) {
 	}
 	pattern = pattern.replace(/\//g, '\\/');
 
-	compiler.add('if(!/%p/.test(%s))', pattern);
+	compiler.add('if(typeof %s!=="string")');
+	compiler.error('STRING_PATTERN');
+	compiler.add('else if(!/%p/.test(%s))', pattern);
 	compiler.error('STRING_PATTERN');
 }
 
@@ -658,10 +660,10 @@ JSONDValidator.prototype = {
 	},
 };
 
-var index$2 = JSONDValidator;
+var lib = JSONDValidator;
 
-var index = index$2;
+var jsondValidator = lib;
 
-return index;
+return jsondValidator;
 
 })));

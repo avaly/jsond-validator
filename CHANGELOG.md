@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.3"></a>
+## [2.1.3](https://github.com/avaly/jsond-validator/compare/v2.1.2...v2.1.3) (2017-11-03)
+
+
+### Bug Fixes
+
+* Non-string values for regexp types ([09da59d](https://github.com/avaly/jsond-validator/commit/09da59d))
+
+
+
 <a name="2.1.2"></a>
 ## [2.1.2](https://github.com/avaly/jsond-validator/compare/v2.1.1...v2.1.2) (2017-05-18)
 
