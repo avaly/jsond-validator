@@ -246,6 +246,25 @@ module.exports = [
 				},
 				valid: true,
 			},
+			{
+				name: 'invalid, null regexp field',
+				data: {
+					name: 'John',
+					manager: true,
+					age: 34,
+					performance: -12.5,
+					range: 15,
+					specific: 9,
+					nickname: null,
+				},
+				valid: false,
+				errors: [
+					{
+						code: 'STRING_PATTERN',
+						path: ['$', 'nickname'],
+					},
+				],
+			},
 		],
 	},
 ];

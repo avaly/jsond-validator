@@ -53,8 +53,19 @@ module.exports = [
 				valid: true,
 			},
 			{
-				name: 'invalid',
+				name: 'invalid string',
 				data: 'fa5!6b.',
+				valid: false,
+				errors: [
+					{
+						code: 'STRING_PATTERN',
+						path: ['$'],
+					},
+				],
+			},
+			{
+				name: 'invalid null',
+				data: null,
 				valid: false,
 				errors: [
 					{

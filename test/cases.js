@@ -27,7 +27,7 @@ var testCasesAll = {
 	interval: require('./data/interval'),
 	set: require('./data/set'),
 	string: require('./data/string'),
-	'string-regular-expression': require('./data/boolean'),
+	'string-regular-expression': require('./data/string-regular-expression'),
 	array: require('./data/array'),
 	object: require('./data/object'),
 	constant: require('./data/constant'),
