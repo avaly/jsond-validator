@@ -47,12 +47,12 @@
     "pretty:bin": "prettier --use-tabs --single-quote --trailing-comma es5 --write \"bin/*\"",
     "pretty:lib": "prettier --use-tabs --single-quote --trailing-comma es5 --write \"lib/*.js*\"",
     "pretty:test": "prettier --use-tabs --single-quote --trailing-comma es5 --write \"test/*/*.js\"",
+    "release": "npm run build:dist && git add dist && standard-version -a",
     "test": "mocha test/*.js",
     "test-client": "npm run build:test && grunt mocha",
     "test-coverage": "istanbul cover node_modules/mocha/bin/_mocha",
     "test-flow": "./test/flow/setup.sh && mocha test/flow/*.test.js",
-    "test-saucelabs": "npm run build:test && grunt saucelabs",
-    "version": "npm run build:dist && git add dist && standard-version"
+    "test-saucelabs": "npm run build:test && grunt saucelabs"
   },
   "dependencies": {},
   "devDependencies": {
