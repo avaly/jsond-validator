@@ -152,6 +152,11 @@ function object(compiler, schema) {
 			compiler.visit(schema[key]);
 			compiler.pop();
 			compiler.add('}');
+		} else {
+			compiler.add('if(%s.hasOwnProperty("%p"))', key);
+			compiler.stack(JSON.stringify(key), "'" + key + "'");
+			compiler.visit(schema[key + '?']);
+			compiler.pop();
 		}
 	}
 
@@ -412,10 +417,10 @@ function Compiler(schema) {
 Compiler.prototype = {
 	generate: function() {
 		var src = this.src.join('\n');
-		// src = require('prettier').format('function generated(data){' + src + '}', {
+		// src = require('prettier').format(src, {
 		// 	useTabs: true,
 		// 	singleQuote: true,
-		// })
+		// });
 
 		
 
@@ -647,12 +652,12 @@ JSONDValidator.prototype = {
 				this.schemas[schemaID],
 				this.schemas
 			);
-			
 			this.compiled[schemaID] = Compiler_1.compile(dereferencedSchema);
 		}
 
-		var compiled = this.compiled[schemaID];
-		var errors = compiled(data);
+		var errors = this.compiled[schemaID](data);
+		
+
 		return {
 			valid: errors.length === 0,
 			errors: errors,

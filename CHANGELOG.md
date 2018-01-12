@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.4"></a>
+## [2.1.4](https://github.com/avaly/jsond-validator/compare/v2.1.3...v2.1.4) (2018-01-12)
+
+
+### Bug Fixes
+
+* Validate types of optional fields in objects :bug: ([4092da9](https://github.com/avaly/jsond-validator/commit/4092da9))
+
+
+
 <a name="2.1.3"></a>
 ## [2.1.3](https://github.com/avaly/jsond-validator/compare/v2.1.2...v2.1.3) (2017-11-03)
 
