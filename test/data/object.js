@@ -150,6 +150,20 @@ module.exports = [
 				valid: true,
 			},
 			{
+				name: 'both, optional type mismatch',
+				data: {
+					name: 'lorem',
+					location: 'fake',
+				},
+				valid: false,
+				errors: [
+					{
+						code: 'NUMBER_REQUIRED',
+						path: ['$', 'location'],
+					},
+				],
+			},
+			{
 				name: 'only optional',
 				data: {
 					location: 12.34,
